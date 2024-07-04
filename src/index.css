@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+
+@font-face {
+  font-family: "Tangerine";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Tangerine"), url("/public/captcha3.ttf") format("truetype");
+}
+
+body {
+  display: block;
+  vertical-align: middle;
+}
+
+input {
+  outline: none;
+}
+
+.arabic {
+  font-family: "Noto Naskh Arabic", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.cairo {
+  font-family: "Cairo", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.captcha {
+  font-family: "Tangerine", serif;
+  font-size: 48px;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: initial;
+  vertical-align: initial;
+}
