@@ -127,7 +127,7 @@ const CertificateLayout = ({
                 width: "100%",
                 height: "100%",
               }}
-              value={`http://localhost:3000/view-certificate/${certificate?.id}/download/`}
+              value={`https://e-services-seven.vercel.app/view-certificate/${certificate?.id}/download/`}
             />
           </div>
         </div>
