@@ -70,7 +70,7 @@ const AdminDashboard = () => {
           </Link>
         </div>
         {/* certificates */}
-        <div className="p-3 rounded-xl bg-white flex flex-col justify-center items-center">
+        <div className="p-3 rounded-xl bg-white flex gap-4 flex-col justify-center items-center">
           {certificates?.length > 0 ? (
             certificates?.map((certificate) => (
               <div

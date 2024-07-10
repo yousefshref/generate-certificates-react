@@ -1,85 +1,137 @@
-import { QRCodeSVG } from "qrcode.react";
+import QRCode from "qrcode.react";
 import React from "react";
 
-const CertificateLayout = ({ children, table, reference }) => {
-  const currentUrl = window.location.href;
-
+const CertificateLayout = ({
+  children,
+  name,
+  setName,
+  dateOfInspection,
+  setDateOfInspection,
+  dateOfIssue,
+  setDateOfIssue,
+  place,
+  setPlace,
+  certificate,
+  refrence,
+}) => {
+  const host = window.location.host;
   return (
-    <div
-      ref={reference}
-      className="bg-white p-1 w-full max-w-[1000px] flex flex-col"
-    >
-      <div>
-        <img src="/logo.jpg" alt="logo" />
-      </div>
-      <div className="w-full flex flex-col justify-center">
-        <div className="flex gap-3 justify-around items-center bg-lime-600 text-white">
-          <p className="font-medium text-[1.9vw]">
-            Phytosanitary Certificate for Re-export
-          </p>
-          <p className="font-medium arabic text-[1.9vw]">
-            شهادة الصحة النباتية لإعادة التصدير
-          </p>
-        </div>
-      </div>
-      <div className="flex flex-col justify-between w-full max-w-[900px] mx-auto">
-        {/*  */}
+    <div ref={refrence} className="w-full relative">
+      <div className="bg-white top-0 h-full w-full text-black">
+        {/* header */}
+        <img alt="header" src="/header.png" />
+        {/* header */}
 
-        <div className="children flex flex-col">{children}</div>
+        <div className="flex flex-col">{children}</div>
 
-        {/*  */}
-        <div className="flex flex-col">
-          <div className="flex w-full mt-9 text-[1vw]">
-            <div className="flex w-1/3 flex-col h-fit text-[1.3vw] text-start">
-              <p className="arabic font-bold">الختم الرسمي</p>
-              <p className="font-bold">Official Stamp</p>
+        {/* last section */}
+        <div className="w-[87%] mt-[6vw] flex gap-2 justify-between mx-auto">
+          <div className="flex text-zinc-900 font-bold text-[1.7vw] w-[17%] h-fit flex-col">
+            <div className="text-center">
+              <p>الختم الرسمي</p>
             </div>
-            {table}
+            <p className="text-[1.6vw]">Official Stamp</p>
           </div>
-          <div className="flex gap-3 mt-7">
-            <div className="qrHere w-fit items-start flex flex-col justify-start">
-              <div className="w-full text-[1vw] mt-0 items-start h-fit">
-                <QRCodeSVG
-                  className="w-full flex flex-col justify-start"
-                  size={Math.min(window.innerWidth, window.innerHeight) / 3}
-                  value={currentUrl + "download/"}
-                  width={Math.min(window.innerWidth, window.innerHeight) / 3}
-                  height={Math.min(window.innerWidth, window.innerHeight) / 4.2}
-                />
-              </div>
-            </div>
-            <div className="flex text-[1.5vw] text-neutral-800 w-1/3 flex-col gap-3">
-              <p className="arabic">
-                للتحقق من صحة بيانات هذا المستند يرجي مسح الشيفرة أو زيارة موقع
-                الوزارة
-              </p>
-              <p>
-                To verify this document please scan the QR code or visit the
-                ministry's website
-              </p>
-            </div>
-            <div className="flex flex-col text-end w-4/5">
-              <p className="arabic text-center text-[1vw]">
-                لا تتحمل وزارة التغير المناخي والبيئة في دولة الإمارات العربية
-                المتحدة أو أي من موظفيها المختصين أي مسؤولية قانونية أو مالية قد
-                تنجم عن هذه الشهادة.
-              </p>
-              <p className="mt-2 text-[1vw] text-center">
-                No financial or legal liability with respect to this certificate
-                shall attach to the Ministry Of Climate Change And Environment -
-                UAE or to any of its officials in the United Arab Emirates.
-              </p>
-              <p className="mt-2 arabic text-[1.2vw] text-center text-yellow-700">
-                هذا المستند معتمد إلكترونيا ولا يحتاج إلي توقيع أو ختم
-              </p>
-              <p className="mt-2 text-[1.2vw] text-center text-yellow-700">
-                This document is electronically approved and does not require
-                signature or stamp
-              </p>
-            </div>
+          <div className="w-[87%] mx-auto text-[1.3vw] mt-3">
+            <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+              <thead>
+                <tr>
+                  <th className="bg-[#e6e7e8] w-[20%] border border-[#d0d1d2]">
+                    <p>مكان الاصدار</p>
+                    <p>Place of Issue</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] w-[18%] border border-[#d0d1d2]">
+                    <p>تاريخ الاصدار</p>
+                    <p>Date of Issue</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] w-[20%] border border-[#d0d1d2]">
+                    <p>تاريخ الفحص</p>
+                    <p>Date of Inspection</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] w-[60%] border border-[#d0d1d2]">
+                    <p>اسم وتوقيع الموظف المختص</p>
+                    <p>Name & Signature of Authorized Officer</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className=" border border-[#d0d1d2] py-1 px-3">
+                    {certificate?.id ? (
+                      <p>{certificate?.place_of_issue}</p>
+                    ) : (
+                      <textarea
+                        type="text"
+                        className="w-[100%] border-0"
+                        placeholder="Enter here..."
+                        value={place}
+                        onChange={(e) => setPlace(e.target.value)}
+                      />
+                    )}
+                  </td>
+                  <td className=" border border-[#d0d1d2] py-1 px-3">
+                    {certificate?.id ? (
+                      <p>{certificate?.date_of_issue}</p>
+                    ) : (
+                      <textarea
+                        type="text"
+                        className="w-[100%] border-0"
+                        placeholder="Enter here..."
+                        value={dateOfIssue}
+                        onChange={(e) => setDateOfIssue(e.target.value)}
+                      />
+                    )}
+                  </td>
+                  <td className=" border border-[#d0d1d2] py-1 px-3">
+                    {certificate?.id ? (
+                      <p>{certificate?.date_of_inspection}</p>
+                    ) : (
+                      <textarea
+                        type="text"
+                        className="w-[100%] border-0"
+                        placeholder="Enter here..."
+                        value={dateOfInspection}
+                        onChange={(e) => setDateOfInspection(e.target.value)}
+                      />
+                    )}
+                  </td>
+                  <td className=" border border-[#d0d1d2] py-1 px-3">
+                    {certificate?.id ? (
+                      <p>
+                        {certificate?.name_and_signature_of_authorized_officer}
+                      </p>
+                    ) : (
+                      <textarea
+                        type="text"
+                        className="w-[100%] border-0"
+                        placeholder="Enter here..."
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    )}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        {/*  */}
+        {/* last section */}
+
+        {/* footer */}
+        <div className="relative">
+          <img src={"/certificateFooter.png"} className="" />
+          <div className="absolute items-center text-center left-[2.7vw] h-[14.5vw] flex flex-col justify-center w-[15vw] bottom-[3.2vw] bg-amber-200">
+            {/* <p className="text-[1.3vw]">الباركود هنا بعد الانشاء</p> */}
+            <QRCode
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+              value={`http://localhost:3000/view-certificate/${certificate?.id}/download/`}
+            />
+          </div>
+        </div>
+        {/* footer */}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminCRUCertificate from "./pages/AdminCRUCertificate";
 import CertificateDownload from "./pages/CertificateDownload";
 import ProtectRoute from "./components/ProtectRoute";
+import Test from "./pages/Test/Test";
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
         path="/view-certificate/:ID/check-download/"
         element={<AdminCRUCertificate download />}
       />
+
+      {/* <Route path="/" element={<TestTest />} /> */}
     </Routes>
   );
 }
