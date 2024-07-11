@@ -22,12 +22,54 @@ import jsPDF from "jspdf";
 const CertificateDownload = () => {
   const [captcha, setCaptcha] = React.useState("");
   const generateCaptcha = () => {
-    setCaptcha(
-      Array.from(
-        { length: 6 },
-        () => Math.random().toString(36).toUpperCase()[2]
-      ).join("")
-    );
+    const images = [
+      {
+        text: "7JLBE6",
+        image: "/captcha/c1.jpeg",
+      },
+      {
+        text: "99J5IE",
+        image: "/captcha/c2.jpeg",
+      },
+      {
+        text: "65ML9J",
+        image: "/captcha/c3.jpeg",
+      },
+      {
+        text: "E788L6",
+        image: "/captcha/c4.jpeg",
+      },
+      {
+        text: "BEGDG6",
+        image: "/captcha/c5.jpeg",
+      },
+      {
+        text: "J6B579",
+        image: "/captcha/c6.jpeg",
+      },
+      {
+        text: "9H57F6",
+        image: "/captcha/c7.jpeg",
+      },
+      {
+        text: "89HJD5",
+        image: "/captcha/c8.jpeg",
+      },
+      {
+        text: "76C9CL",
+        image: "/captcha/c9.jpeg",
+      },
+      {
+        text: "9AB9GH",
+        image: "/captcha/c10.jpeg",
+      },
+      {
+        text: "5H68B8",
+        image: "/captcha/c12.jpeg",
+      },
+    ];
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    setCaptcha(randomImage);
   };
   useEffect(() => {
     generateCaptcha();
@@ -66,6 +108,7 @@ const CertificateDownload = () => {
   }, []);
 
   const [downloading, setDownloading] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const parent = React.useRef(null);
 
@@ -76,37 +119,44 @@ const CertificateDownload = () => {
   const downloadCertificate = async () => {
     setDownloading(true);
 
-    const captureScreenshot = async (divRef) => {
-      const canvas = await html2canvas(divRef.current);
-      return canvas.toDataURL("image/png");
-    };
+    if (
+      certificate?.number == certificateNumber &&
+      certificate?.verification_code == verificationCode &&
+      captchaCode == captcha?.text
+    ) {
+      const captureScreenshot = async (divRef) => {
+        const canvas = await html2canvas(divRef.current);
+        return canvas.toDataURL("image/png");
+      };
+      try {
+        // Show the divs before capturing
+        parent.current.classList.remove("hidden");
 
-    try {
-      // Show the divs before capturing
-      parent.current.classList.remove("hidden");
+        const images = [
+          await captureScreenshot(div1Ref),
+          await captureScreenshot(div2Ref),
+          await captureScreenshot(div3Ref),
+        ];
 
-      const images = [
-        await captureScreenshot(div1Ref),
-        await captureScreenshot(div2Ref),
-        await captureScreenshot(div3Ref),
-      ];
+        // Hide the divs after capturing
+        parent.current.classList.add("hidden");
 
-      // Hide the divs after capturing
-      parent.current.classList.add("hidden");
+        const pdf = new jsPDF();
 
-      const pdf = new jsPDF();
+        images.forEach((image, index) => {
+          if (index > 0) {
+            pdf.addPage();
+          }
+          pdf.addImage(image, "PNG", 10, 10, 190, 0); // Adjust dimensions as needed
+        });
 
-      images.forEach((image, index) => {
-        if (index > 0) {
-          pdf.addPage();
-        }
-        pdf.addImage(image, "PNG", 10, 10, 190, 0); // Adjust dimensions as needed
-      });
-
-      // Save the PDF
-      pdf.save("certificate.pdf");
-    } catch (error) {
-      console.error("Error capturing screenshots or creating PDF:", error);
+        // Save the PDF
+        pdf.save("certificate.pdf");
+      } catch (error) {
+        console.error("Error capturing screenshots or creating PDF:", error);
+      }
+    } else {
+      setError(true);
     }
 
     setDownloading(false);
@@ -349,23 +399,24 @@ const CertificateDownload = () => {
                   </span>
                 </div>
                 {/* capcha */}
-                <div
-                  className="captcha-container relative captcha flex flex-col justify-center items-center text-center bg-cover w-[170px] h-[50px] mt-3"
-                  style={{
-                    backgroundImage: `url(/capcha.jpg)`,
-                    backgroundSize: "700px",
-                  }}
-                >
+                <div className="relative">
+                  <img
+                    className="captcha-container captcha flex flex-col justify-center items-center text-center bg-cover w-[170px] h-[50px] mt-3"
+                    src={captcha?.image}
+                  />
                   <span
                     onClick={generateCaptcha}
-                    className="absolute right-1 text-lg top-1 z-50 cursor-pointer text-black"
+                    className="absolute top-3.5 text-xl text-black cursor-pointer right-1"
                   >
                     <BiRefresh />
                   </span>
-                  <div className="absolute left-0 top-0 bg-white opacity-50 w-full h-full"></div>
-                  <p className="z-50 flex gap-4 text-2xl">{captcha}</p>
                 </div>
                 {/* capcha */}
+                {error && (
+                  <p className="text-red-600 text-xs mt-2 cairo font-bold">
+                    الأحرف المدخلة خاطئة
+                  </p>
+                )}
               </div>
             </div>
           </div>
