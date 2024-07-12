@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CertificateLayout from "../components/CertificateLayout";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { server } from "../utlits/Variables";
 import { useParams } from "react-router-dom";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
   const [number, setNumber] = useState("");
@@ -104,6 +106,75 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
     }
   }, []);
 
+  const [user, setUser] = useState({});
+
+  const getUser = async () => {
+    await axios
+      .get(`${server}api/user/`, {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((e) => {
+        if (e.data.id) {
+          setUser(e.data);
+        }
+      })
+      .catch((e) => {
+        // console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const div1Ref_ = useRef();
+  const div2Ref_ = useRef();
+  const div3Ref_ = useRef();
+
+  const downloadCertificate = async () => {
+    const captureScreenshot = async (divRef) => {
+      const canvas = await html2canvas(divRef.current, {
+        scale: 2, // Adjust the scale value to increase the quality
+        useCORS: true, // This ensures that images from other domains are rendered correctly
+      });
+      return canvas.toDataURL("image/png");
+    };
+    try {
+      const images = [
+        await captureScreenshot(div1Ref_),
+        await captureScreenshot(div2Ref_),
+        await captureScreenshot(div3Ref_),
+      ];
+
+      const pdf = new jsPDF();
+
+      const dimensions = [
+        { x: 10, y: 0, width: 190, height: 280 },
+        { x: 10, y: 0, width: 190, height: 280 },
+        { x: 10, y: 0, width: 190, height: 0 },
+      ];
+
+      images.forEach((image, index) => {
+        const { x, y, width, height } = dimensions[index];
+
+        if (index > 0) {
+          pdf.addPage();
+        }
+
+        // Add image with dynamic dimensions
+        pdf.addImage(image, "PNG", x, y, width, height);
+      });
+
+      // Save the PDF
+      pdf.save("شهادة زراعية صحية للتصدير_إعادة تصدير.pdf");
+    } catch (error) {}
+  };
+
+  console.log(div1Ref_);
+  console.log(div2Ref_);
+
   return (
     <div className="flex gap-20 p-4 flex-col bg-zinc-200 roboto-medium">
       {/* first page */}
@@ -117,7 +188,7 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
         setDateOfIssue={setDateOfIssue}
         place={placeOfIssue}
         setPlace={setPlaceOfIssue}
-        refrence={div1Ref}
+        refrence={div1Ref ? div1Ref : div1Ref_}
       >
         {/* number and verification */}
         <div
@@ -494,7 +565,7 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
         setDateOfIssue={setDateOfIssue}
         place={placeOfIssue}
         setPlace={setPlaceOfIssue}
-        refrence={div2Ref}
+        refrence={div2Ref ? div2Ref : div2Ref_}
       >
         <div
           style={{ fontWeight: "500" }}
@@ -621,7 +692,7 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
         setDateOfIssue={setDateOfIssue}
         place={placeOfIssue}
         setPlace={setPlaceOfIssue}
-        refrence={div3Ref}
+        refrence={div3Ref ? div3Ref : div3Ref_}
       >
         <div
           style={{ fontWeight: "400" }}
@@ -823,16 +894,18 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
             </tbody>
           </table>
         </div>
-        <div className="w-[87%] mt-[0.5vw] flex gap-2 justify-between mx-auto">
-          <span
-            onClick={() => {
-              setData((data) => [...data, {}]);
-            }}
-            className="text-[1.6vw] cursor-pointer text-green-600"
-          >
-            <FaPlus />
-          </span>
-        </div>
+        {!view && (
+          <div className="w-[87%] mt-[0.5vw] flex gap-2 justify-between mx-auto">
+            <span
+              onClick={() => {
+                setData((data) => [...data, {}]);
+              }}
+              className="text-[1.6vw] cursor-pointer text-green-600"
+            >
+              <FaPlus />
+            </span>
+          </div>
+        )}
 
         <br />
         <br />
@@ -858,6 +931,14 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
           </button>
         </>
       )}
+      {view && user?.id ? (
+        <button
+          className="w-[100%] bg-[#3375ac] text-white font-bold py-2 px-4 rounded"
+          onClick={downloadCertificate}
+        >
+          Download
+        </button>
+      ) : null}
     </div>
   );
 };

@@ -151,7 +151,7 @@ const CertificateDownload = () => {
         });
 
         // Save the PDF
-        pdf.save("certificate.pdf");
+        pdf.save("شهادة زراعية صحية للتصدير_إعادة تصدير.pdf");
       } catch (error) {
         console.error("Error capturing screenshots or creating PDF:", error);
       }
