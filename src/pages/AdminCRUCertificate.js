@@ -702,7 +702,7 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
             <p>Annexof Phytosanitary Certificate No.:</p>
           </div>
           <div className="flex flex-col text-center">
-            <p>DXB-APH-02415-263616</p>
+            <p>{number}</p>
           </div>
           <div dir="rtl" className="flex flex-col text-end">
             <p>ملحق الشهادة الصحية الصحية رقم:</p>
