@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BiInfoCircle,
   BiRefresh,
@@ -18,7 +18,15 @@ import { useParams } from "react-router-dom";
 import AdminCRUCertificate from "./AdminCRUCertificate";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { FaApple } from "react-icons/fa";
+import {
+  FaApple,
+  FaFacebookF,
+  FaInstagramSquare,
+  FaLinkedinIn,
+  FaPhoneAlt,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -169,6 +177,20 @@ const CertificateDownload = () => {
     setDownloading(false);
   };
 
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div
@@ -195,6 +217,26 @@ const CertificateDownload = () => {
             </div>
           </div>
         )}
+
+        {/* hidden header */}
+        <div
+          className={`py-3 md:pb-7 z-[200] transition-all cairo fixed w-full md:max-w-full max-w-[200px] bg-white text-gray-600 ${
+            scrollY > 190 ? "top-0" : "-top-28"
+          } shadow-md text-center flex-row justify-center md:justify-normal shadow-black/20 flex items-center bg-white md:right-0 left-1/2 -translate-x-1/2`}
+        >
+          <p className="md:hidden font-bold block">عد إلي الأعلي</p>
+          <span className="me-14 hidden ms-3 text-lg my-auto md:flex flex-col justify-center">
+            <RxHome />
+          </span>{" "}
+          <p className="me-12 hidden md:block">عن الوزارة</p>
+          <p className="me-12 hidden md:block">التشريعات</p>
+          <p className="me-12 hidden md:block">خدماتنا</p>
+          <p className="me-12 hidden md:block">المعرفة</p>
+          <p className="me-12 hidden md:block">المشاركة الالكترونية</p>
+          <p className="me-12 hidden md:block">المركز الإعلامي</p>
+          <p className="me-12 hidden md:block">البيانات المفتوحة</p>
+          <p className="block md:hidden"></p>
+        </div>
 
         {/* header */}
         <div className="flex md:pt-0 pt-5 md:justify-end justify-end md:gap-0 gap-3 p-3 items-center bg-white">
@@ -262,7 +304,7 @@ const CertificateDownload = () => {
           </div>
         </div>
         <div className="flex md:justify-between justify-end gap-3 mt-3 items-center md:px-7 px-2">
-          <div className="md:flex hidden gap-3 text-xs">
+          <div className="md:flex cairo hidden gap-3 text-xs">
             <div className="flex gap-1">
               <p>الصفحة الرئيسية</p>
               <span className="text-[#b68a35] font-bold">
@@ -616,24 +658,40 @@ const CertificateDownload = () => {
       {/* footer of the footer hahaha, jk */}
       <div
         dir="rtl"
-        className="flex cairo text-xs text-[#a7a7a7] py-5 justify-between px-10 bg-[#fafafa]  items-center"
+        className="flex md:flex-row flex-col cairo text-xs text-[#a7a7a7] py-5 justify-between px-10 bg-[#fafafa]  items-center"
       >
-        <div className="flex gap-5 items-center justify-between w-[50%]">
+        <div className="flex md:text-start text-center md:flex-row flex-col gap-5 items-center justify-between w-full md:w-[50%]">
           <p>
             حقوق الطبع © 2023 جميع الحقوق محفوظة. وزارة التغير المناخي والبيئة.
           </p>
-          <div className="flex gap-5">
-            <span>s</span>
-            <span>s</span>
-            <span>s</span>
-            <span>s</span>
-            <span>s</span>
+          <div className="flex text-lg text-[#828181] gap-5 md:m-0 md:mt-0 mt-4 me-auto">
+            <span>
+              <FaFacebookF />
+            </span>
+            <span>
+              <FaTwitter />
+            </span>
+            <span>
+              <FaYoutube />
+            </span>
+            <span>
+              <FaInstagramSquare />
+            </span>
+            <span>
+              <FaLinkedinIn />
+            </span>
           </div>
         </div>
-        <div className="flex gap-3">
-          <p>800 30 50 </p>
-          <p>ph</p>
+        <div className="flex md:mt-0 mt-12 md:m-0 ms-auto gap-2 text-base items-center">
+          <p className="font-bold">800 30 50</p>
+          <span className="text-[#cd9835]">
+            <FaPhoneAlt />
+          </span>
         </div>
+      </div>
+      {/*  */}
+      <div className="md:hidden block text-center bg-[#cd9835] text-white font-bold py-2 px-4">
+        <p>الموقع الرئيسي</p>
       </div>
     </>
   );

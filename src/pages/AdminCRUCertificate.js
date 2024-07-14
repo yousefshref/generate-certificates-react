@@ -696,15 +696,15 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
       >
         <div
           style={{ fontWeight: "400" }}
-          className="w-[87%] mb-[1.2vw] mx-auto flex text-[1.6vw] justify-between"
+          className="w-[87%] mb-[1.2vw] mx-auto flex text-[1.6vw] justify-between text-base"
         >
-          <div className="flex flex-col text-start">
+          <div className="flex flex-col text-start w-[30%]">
             <p>Annexof Phytosanitary Certificate No.:</p>
           </div>
-          <div className="flex flex-col text-center">
-            <p>{number}</p>
+          <div className="flex flex-col text-center w-[40%]">
+            <p>{certificate?.number ? certificate?.number : number}</p>
           </div>
-          <div dir="rtl" className="flex flex-col text-end">
+          <div dir="rtl" className="flex flex-col text-start w-[30%]">
             <p>ملحق الشهادة الصحية الصحية رقم:</p>
           </div>
         </div>
