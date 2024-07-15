@@ -5,7 +5,7 @@ import {
   BiSearch,
   BiSolidMicrophone,
 } from "react-icons/bi";
-import { BsPerson } from "react-icons/bs";
+import { BsFillInfoCircleFill, BsPerson } from "react-icons/bs";
 import { CiSettings } from "react-icons/ci";
 import { GoDotFill } from "react-icons/go";
 import { IoIosArrowBack, IoIosArrowDown, IoLogoAndroid } from "react-icons/io";
@@ -323,16 +323,16 @@ const CertificateDownload = () => {
               <PiPrinterLight />
             </span>
             <span className="p-2 rounded-full bg-gray-100 flex flex-col justify-center transition-all duration-300 hover:bg-gray-400 cursor-pointer md:text-zinc-700 text-zinc-500 text-xl hover:text-white">
-              <MdOutlineTextDecrease />
+              <MdOutlineTextIncrease />
             </span>
             <span className="p-2 rounded-full bg-gray-100 flex flex-col justify-center transition-all duration-300 hover:bg-gray-400 cursor-pointer md:text-zinc-700 text-zinc-500 text-xl hover:text-white">
-              <MdOutlineTextIncrease />
+              <MdOutlineTextDecrease />
             </span>
           </div>
         </div>
 
         {/* download section */}
-        <div className="flex gap-14 md:mt-9 mt-2 text-zinc-500 p-2 bg-white">
+        <div className="flex gap-14 md:mt-9 mt-4 text-zinc-500 p-2 bg-white">
           {/* important links */}
           <div className="w-[260px] cairo md:flex h-fit pb-3 min-w-[260px] rounded-xl p-1 border border-gray-300 hidden flex-col">
             <h3 className="text-xl font-bold mt-4">روابط هامة</h3>
@@ -369,8 +369,8 @@ const CertificateDownload = () => {
             <h3 className="md:text-xl text-base md:font-bold cairo md:bg-white bg-[#b68a35] text-white md:text-[#87888b] p-1 px-2">
               مركز الشهادات والتصاريح الرقمية
             </h3>
-            <hr className="h-[1.5px] bg-zinc-400 my-2" />
-            <div className="flex flex-col text-black/70">
+            <hr className="h-[1.5px] md:block hidden bg-zinc-400 my-2" />
+            <div className="flex md:mt-0 mt-2 flex-col text-black/70">
               <p className="text-[10.5px]">
                 يمكنك الان التحقق من الشهادات او التصاريح التي يتم إصدارها من
                 وزارة التغير المناخي والبيئة من خلال ادخال رقم المستند (رقم
@@ -380,7 +380,7 @@ const CertificateDownload = () => {
                 الحقول المشار إليها بعلامة ( * ) إلزامية
               </p>
             </div>
-            <div className="flex mt-2 flex-col gap-3 p-1 w-full md:max-w-[700px]">
+            <div className="flex md:mt-2 mt-0 flex-col gap-3 p-1 w-full md:max-w-[700px]">
               <div className="flex md:flex-row flex-col md:justify-between justify-start gap-2 md:items-center items-start">
                 <p className="text-[#b68a35] md:text-sm text-xs flex gap-2">
                   رقم الشهادة{" "}
@@ -388,22 +388,22 @@ const CertificateDownload = () => {
                 </p>
                 <div className="flex gap-1 md:w-2/3 w-full">
                   <p className="text-[#b68a35] hidden md:block">*</p>
-                  <div className="relative w-full">
+                  <div className="relative flex w-full">
                     <input
                       value={certificateNumber}
                       onChange={(e) => setCertificateNumber(e.target.value)}
                       type="text"
                       className="w-full p-1 md:py-1 py-2 border outline-none border-gray-300 md:text-xs text-lg"
                     />
-                    <span className="absolute left-1 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-400">
+                    <span className="md:absolute my-auto md:-ms-0 -ms-1.5 md:text-base text-xl md:mt-0 mt-5 left-1 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-400">
                       <BiSolidMicrophone />
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="border-t border-dashed border-zinc-300 mt-2"></div>
-            <div className="flex mt-2 flex-col gap-3 p-1 w-full md:max-w-[700px]">
+            <div className="border-t border-dashed border-zinc-300 mt-0.5 md:mt-2"></div>
+            <div className="flex md:mt-2 mt-0 flex-col gap-3 p-1 w-full md:max-w-[700px]">
               <div className="flex md:flex-row flex-col md:justify-between justify-start gap-2 md:items-center items-start">
                 <p className="text-[#b68a35] md:text-sm text-xs flex gap-2">
                   رمز التحقق{" "}
@@ -411,22 +411,22 @@ const CertificateDownload = () => {
                 </p>
                 <div className="flex gap-1 md:w-2/3 w-full">
                   <p className="text-[#b68a35] hidden md:block">*</p>
-                  <div className="relative w-full">
+                  <div className="relative flex w-full">
                     <input
                       value={verificationCode}
                       onChange={(e) => setVerificationCode(e.target.value)}
                       type="text"
                       className="w-full p-1 md:py-1 py-2 border outline-none border-gray-300 md:text-xs text-lg"
                     />
-                    <span className="absolute left-1 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-400">
+                    <span className="md:absolute my-auto md:-ms-0 -ms-1.5 md:text-base text-xl md:mt-0 mt-5 left-1 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-400">
                       <BiSolidMicrophone />
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="border-t border-dashed border-zinc-300 mt-2"></div>
-            <div className="flex mt-2 flex-col gap-3 p-1 w-full max-w-[700px]">
+            <div className="border-t border-dashed zinc-0.500 md:mt-2"></div>
+            <div className="flex md:mt-2 mt-1 flex-col gap-3 p-1 w-full max-w-[700px]">
               <div className="flex md:flex-row flex-col justify-between gap-2 items-start">
                 <p className="text-[#b68a35] text-sm flex gap-2">
                   ادخل الأحرف الظاهره
@@ -445,9 +445,12 @@ const CertificateDownload = () => {
                       <span className="absolute left-1 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-400">
                         <BiSolidMicrophone />
                       </span>
+                      <span className="absolute md:hidden block left-3 top-[65%] -translate-y-1/2 my-auto text-[#b68a35]">
+                        <BsFillInfoCircleFill />
+                      </span>
                     </div>
-                    <span className="my-auto text-[#b68a35]">
-                      <BiInfoCircle />
+                    <span className="md:block hidden my-auto text-[#b68a35]">
+                      <BsFillInfoCircleFill />
                     </span>
                   </div>
                   {/* capcha */}
@@ -488,11 +491,11 @@ const CertificateDownload = () => {
         </div>
 
         {/* absolute */}
-        <div className="p-2 cairo md:flex hidden arabic gap-2 items-center text-lg px-5 fixed rounded-full w-fit bottom-4 left-4 bg bg-[#b68a35]">
+        <div className="md:p-2 z-[200] p-3 m-0 cairo flex arabic gap-2 items-center my-auto text-lg md:px-5 fixed rounded-full w-fit bottom-4 left-4 bg bg-[#b68a35]">
           <span className="my-auto flex">
             <RiChat3Line />
           </span>
-          <p>الدردشة الإكترونية</p>
+          <p className="md:block hidden">الدردشة الإكترونية</p>
         </div>
         <div className="w-full flex max-w-[55px] h-fit rounded-full fixed bottom-4 right-4 bg bg-[#b68a35] z-50">
           <img
