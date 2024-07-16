@@ -134,6 +134,10 @@ const CertificateDownload = () => {
   const downloadCertificate = async () => {
     setDownloading(true);
 
+    // if (
+    //   certificate?.number == certificateNumber &&
+    //   certificate?.verification_code == verificationCode
+    // )
     if (
       certificate?.number == certificateNumber &&
       certificate?.verification_code == verificationCode &&
@@ -158,12 +162,63 @@ const CertificateDownload = () => {
 
         const pdf = new jsPDF();
 
-        images.forEach((image, index) => {
-          if (index > 0) {
+        // Function to load an image and return its dimensions
+        const loadImage = (imageSrc) => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = imageSrc;
+
+            img.onload = () => {
+              const imgWidth = img.naturalWidth;
+              const imgHeight = img.naturalHeight;
+              resolve({ img, imgWidth, imgHeight });
+            };
+
+            img.onerror = (error) => reject(error);
+          });
+        };
+
+        for (let i = 0; i < images.length; i++) {
+          const { img, imgWidth, imgHeight } = await loadImage(images[i]);
+
+          // Calculate the aspect ratio
+          const aspectRatio = imgWidth / imgHeight;
+
+          // Define PDF page dimensions
+          const pageWidth = pdf.internal.pageSize.getWidth();
+          const pageHeight = pdf.internal.pageSize.getHeight();
+
+          // Calculate dimensions to fit the image within the PDF page
+          let renderWidth, renderHeight;
+          if (aspectRatio > 1) {
+            // Landscape images
+            renderWidth = pageWidth;
+            renderHeight = renderWidth / aspectRatio;
+            if (renderHeight > pageHeight) {
+              renderHeight = pageHeight;
+              renderWidth = renderHeight * aspectRatio;
+            }
+          } else {
+            // Portrait images
+            renderHeight = pageHeight;
+            renderWidth = renderHeight * aspectRatio;
+            if (renderWidth > pageWidth) {
+              renderWidth = pageWidth;
+              renderHeight = renderWidth / aspectRatio;
+            }
+          }
+
+          // Add a new page if not the first image
+          if (i > 0) {
             pdf.addPage();
           }
-          pdf.addImage(image, "PNG", 10, 10, 190, 0); // Adjust dimensions as needed
-        });
+
+          // Center image horizontally and vertically
+          const x = (pageWidth - renderWidth) / 2;
+          const y = (pageHeight - renderHeight) / 2;
+
+          pdf.addImage(images[i], "PNG", x, y, renderWidth, renderHeight);
+        }
 
         // Save the PDF
         pdf.save("شهادة زراعية صحية للتصدير_إعادة تصدير.pdf");
@@ -505,15 +560,6 @@ const CertificateDownload = () => {
           />
         </div>
 
-        <div ref={parent} dir="ltr" className="hidden">
-          <AdminCRUCertificate
-            div1Ref={div1Ref}
-            div2Ref={div2Ref}
-            div3Ref={div3Ref}
-            view
-          />
-        </div>
-
         {/* under */}
         <div className="hidden mt-20 md:flex gap-3">
           <div className="bg-[#f7f7f7] p-4 px-16 transition-all hover:scale-105 duration-300 cursor-pointer">
@@ -695,6 +741,16 @@ const CertificateDownload = () => {
       {/*  */}
       <div className="md:hidden block text-center bg-[#cd9835] text-white font-bold py-2 px-4">
         <p>الموقع الرئيسي</p>
+      </div>
+
+      <div ref={parent} dir="ltr" className="hidden">
+        <AdminCRUCertificate
+          noPadding
+          div1Ref={div1Ref}
+          div2Ref={div2Ref}
+          div3Ref={div3Ref}
+          view
+        />
       </div>
     </>
   );

@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@azure/msal-browser": "^3.19.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
     "@react-pdf/renderer": "^3.4.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tinymce/tinymce-react": "^5.1.1",
     "@xmldom/xmldom": "^0.8.10",
     "axios": "^1.7.2",
     "docx": "^8.5.0",
@@ -29,6 +32,7 @@
     "react-router-dom": "^6.24.0",
     "react-scripts": "5.0.1",
     "swiper": "^11.1.4",
+    "tinymce": "^7.2.1",
     "use-react-screenshot": "^4.0.0",
     "util": "^0.12.5",
     "web-vitals": "^2.1.4"

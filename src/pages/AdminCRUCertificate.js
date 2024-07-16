@@ -7,7 +7,13 @@ import { useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
+const AdminCRUCertificate = ({
+  view,
+  div1Ref,
+  div2Ref,
+  div3Ref,
+  noPadding,
+}) => {
   const [number, setNumber] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
 
@@ -172,11 +178,12 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
     } catch (error) {}
   };
 
-  console.log(div1Ref_);
-  console.log(div2Ref_);
-
   return (
-    <div className="flex gap-20 p-4 flex-col bg-zinc-200 roboto-medium">
+    <div
+      className={`flex ${noPadding ? "gap-1" : "gap-52"} ${
+        noPadding ? "p-0" : "p-4"
+      } flex-col bg-zinc-200 roboto-medium`}
+    >
       {/* first page */}
       <CertificateLayout
         certificate={certificate}
@@ -280,7 +287,7 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
         {/* first thing first */}
         <div
           style={{ fontWeight: "500" }}
-          className="w-[87%] bg-[#8e8f90] text-white py-1 mt-[1.2vw] flex mx-auto text-[1.6vw] justify-between"
+          className="w-[87%] bg-[#8e8f90] text-white py-1 px-2 mt-[1.2vw] flex mx-auto text-[1.6vw] justify-between"
         >
           <p>I. Description of Consignment</p>
           <p className="font-medium arabic">أولا: وصف الإرساليـــــــــة</p>
@@ -678,7 +685,9 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
         </div>
         {/*  */}
         <img src="/a.png" />
-        <img src="/blank.jpeg" />
+        <div className="flex flex-col">
+          <img className="w-[90%]" src="/blank.jpeg" />
+        </div>
       </CertificateLayout>
 
       {/* third page */}
@@ -907,22 +916,6 @@ const AdminCRUCertificate = ({ view, div1Ref, div2Ref, div3Ref }) => {
           </div>
         )}
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         {/*  */}
       </CertificateLayout>
 
