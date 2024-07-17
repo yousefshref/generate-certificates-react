@@ -140,8 +140,9 @@ const CertificateDownload = () => {
     // )
     if (
       certificate?.number == certificateNumber &&
-      certificate?.verification_code == verificationCode &&
-      captchaCode == captcha?.text
+      certificate?.verification_code == verificationCode
+      // &&
+      // captchaCode == captcha?.text
     ) {
       const captureScreenshot = async (divRef) => {
         const canvas = await html2canvas(divRef.current);
@@ -215,9 +216,19 @@ const CertificateDownload = () => {
 
           // Center image horizontally and vertically
           const x = (pageWidth - renderWidth) / 2;
-          const y = (pageHeight - renderHeight) / 2;
+          // const y = (pageHeight - renderHeight) / 2;
+          const y = 0;
 
-          pdf.addImage(images[i], "PNG", x, y, renderWidth, renderHeight);
+          pdf.addImage(
+            images[i],
+            "PNG",
+            x,
+            y,
+            renderWidth,
+            renderHeight,
+            "",
+            "FAST"
+          );
         }
 
         // Save the PDF
