@@ -208,7 +208,7 @@ const AdminCRUCertificate = ({
           </div>
           <div className="flex flex-col text-center">
             {certificate?.id ? (
-              <p>{certificate?.number}</p>
+              <p className="py-1">{certificate?.number}</p>
             ) : (
               <input
                 type="text"
@@ -218,7 +218,7 @@ const AdminCRUCertificate = ({
               />
             )}
             {certificate?.id ? (
-              <p>{certificate?.verification_code}</p>
+              <p className="py-1">{certificate?.verification_code}</p>
             ) : (
               <input
                 type="text"
@@ -237,14 +237,14 @@ const AdminCRUCertificate = ({
 
         {/* first table */}
         <div className="w-[87%] mx-auto text-[1.3vw] mt-3">
-          <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+          <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#8e8f90]">
                   <p>من / منظمة وقاية النباتات في</p>
                   <p>From / Plant Protection Organization(s) of</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#8e8f90]">
                   <p>إلي / منظمة وقاية النباتات في</p>
                   <p>To / Plant Protection Organization(s) of</p>
                 </th>
@@ -252,9 +252,9 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className=" border border-[#d0d1d2] py-1">
+                <td className=" border border-[#8e8f90] py-1">
                   {certificate?.id ? (
-                    <p>{certificate?.frm}</p>
+                    <p className="py-1">{certificate?.frm}</p>
                   ) : (
                     <textarea
                       type="text"
@@ -265,9 +265,9 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.to}</p>
+                    <p className="py-1">{certificate?.to}</p>
                   ) : (
                     <textarea
                       type="text"
@@ -293,14 +293,14 @@ const AdminCRUCertificate = ({
           <p className="font-medium arabic">أولا: وصف الإرساليـــــــــة</p>
         </div>
         <div className="w-[87%] mx-auto text-[1.3vw]">
-          <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+          <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#8e8f90]">
                   <p>اسم جهة التصدير وعنوانها</p>
                   <p>Name & Address of Exporter</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] w-[50%] py-1 border border-[#8e8f90]">
                   <p>اسم المستورد وعنوانه حسب البيانات</p>
                   <p>Declared Name & Address of Importer</p>
                 </th>
@@ -308,9 +308,11 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className="border border-[#d0d1d2] py-1">
+                <td className="border border-[#8e8f90] py-1">
                   {certificate?.id ? (
-                    <p>{certificate?.name_address_of_exporter}</p>
+                    <p className="py-1">
+                      {certificate?.name_address_of_exporter}
+                    </p>
                   ) : (
                     <textarea
                       type="text"
@@ -321,9 +323,11 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.name_address_of_importer}</p>
+                    <p className="py-1">
+                      {certificate?.name_address_of_importer}
+                    </p>
                   ) : (
                     <textarea
                       type="text"
@@ -339,14 +343,14 @@ const AdminCRUCertificate = ({
           </table>
         </div>
         <div className="w-[87%] mx-auto text-[1.3vw]">
-          <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+          <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] w-[50%] py-1.5 px-3 border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] w-[50%] py-1.5 px-3 border border-[#8e8f90]">
                   <p>العلامات المميزة</p>
                   <p>Distinguishing Marks</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[50%] py-1.5 px-3 border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] w-[50%] py-1.5 px-3 border border-[#8e8f90]">
                   <p>نقطة الدخول وعنوانه حسب البيانات في</p>
                   <p>Declared Point of Entry</p>
                 </th>
@@ -354,9 +358,9 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className=" border border-[#d0d1d2] py-1 px-3">
+                <td className=" border border-[#8e8f90] py-1 px-3">
                   {certificate?.id ? (
-                    <p>{certificate?.distinguishing_marks}</p>
+                    <p className="py-1">{certificate?.distinguishing_marks}</p>
                   ) : (
                     <textarea
                       type="text"
@@ -367,9 +371,11 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.declared_point_of_entry}</p>
+                    <p className="py-1">
+                      {certificate?.declared_point_of_entry}
+                    </p>
                   ) : (
                     <textarea
                       type="text"
@@ -389,26 +395,26 @@ const AdminCRUCertificate = ({
 
         {/* Secound table */}
         <div className="w-[87%] mt-[2vw] mx-auto text-[1.3vw]">
-          <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+          <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#8e8f90]">
                   <p>غرض الاستعمال النهائي</p>
                   <p>End-use Purpose</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[30%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[30%] border border-[#8e8f90]">
                   <p>وسيلة النقل حسب البيانات</p>
                   <p>Declared Means of Conveyance</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#8e8f90]">
                   <p>رقم إذن الاستيراد</p>
                   <p>Import Permit No.</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#8e8f90]">
                   <p>الكمية الكلية</p>
                   <p>Total Quantity</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[25%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[25%] border border-[#8e8f90]">
                   <p>العدد الكلي للطرود</p>
                   <p>Total No. of Packages</p>
                 </th>
@@ -416,9 +422,9 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className=" border border-[#d0d1d2] py-1 px-3">
+                <td className=" border border-[#8e8f90] py-1 px-3">
                   {certificate?.id ? (
-                    <p>{certificate?.end_use_purpose}</p>
+                    <p className="py-1">{certificate?.end_use_purpose}</p>
                   ) : (
                     <textarea
                       type="text"
@@ -429,9 +435,11 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.declared_means_of_conveyance}</p>
+                    <p className="py-1">
+                      {certificate?.declared_means_of_conveyance}
+                    </p>
                   ) : (
                     <textarea
                       type="text"
@@ -444,9 +452,9 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.import_permit_no}</p>
+                    <p className="py-1">{certificate?.import_permit_no}</p>
                   ) : (
                     <textarea
                       type="text"
@@ -457,9 +465,9 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.total_quantity}</p>
+                    <p className="py-1">{certificate?.total_quantity}</p>
                   ) : (
                     <textarea
                       type="text"
@@ -470,9 +478,9 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.total_nm_of_packages}</p>
+                    <p className="py-1">{certificate?.total_nm_of_packages}</p>
                   ) : (
                     <textarea
                       type="text"
@@ -490,34 +498,34 @@ const AdminCRUCertificate = ({
 
         {/*  */}
         <div className="w-[87%] mx-auto text-[1.3vw]">
-          <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+          <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#8e8f90]">
                   <p>الاسم العلمي</p>
                   <p>Scientific Name</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#8e8f90]">
                   <p>الاسم العام</p>
                   <p>Common Name</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#8e8f90]">
                   <p>جهة المنشأ</p>
                   <p>Origin</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[10%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[10%] border border-[#8e8f90]">
                   <p>رقم الشهادة</p>
                   <p>PC No.</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[10%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[10%] border border-[#8e8f90]">
                   <p>الكمية</p>
                   <p>Quantity</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#8e8f90]">
                   <p>عدد الطرود</p>
                   <p>No. of Packages</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#8e8f90]">
                   <p>الصنف</p>
                   <p>Commodity Class</p>
                 </th>
@@ -525,12 +533,12 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className=" ">See Annex of Certificate.</td>
-                <td className=" "></td>
-                <td className=" "></td>
-                <td className=" "></td>
-                <td className=" "></td>
-                <td className=" "></td>
+                <td className="">See Annex of Certificate.</td>
+                <td className=""></td>
+                <td className=""></td>
+                <td className=""></td>
+                <td className=""></td>
+                <td className=""></td>
                 <td dir="rtl" className="">
                   انظر ملحق الشهادة.
                 </td>
@@ -549,7 +557,7 @@ const AdminCRUCertificate = ({
         {/* text */}
 
         {/* secound */}
-        <div className="w-[87%] text-[1.6vw] border mt-[0.5vw] flex flex-col mx-auto">
+        <div className="w-[87%] text-[1.6vw] border border-[#8e8f90] mt-[0.5vw] flex flex-col mx-auto">
           <div className="flex text-white justify-between bg-[#8e8f90] py-0.5 px-3">
             <p className="font-medium">II. Additional Declaration</p>
             <p>ثانيـــا: إقــــرار إضـــافى</p>
@@ -585,26 +593,26 @@ const AdminCRUCertificate = ({
         </div>
         {/*  */}
         <div className="w-[87%] mt-[2vw] mx-auto text-[1.3vw]">
-          <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+          <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] py-1 w-[25%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[25%] border border-[#8e8f90]">
                   <p className="truncate">الكيماويات - المادة الفعالة</p>
                   <p className="truncate">Chemicals (Active Ingredients)</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#8e8f90]">
                   <p className="truncate">مدة العرض ودرجة الحرارة</p>
                   <p className="truncate">Duration & Temperature</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[15%] border border-[#8e8f90]">
                   <p className="truncate">تاريخ المعاملة</p>
                   <p className="truncate">Treatment Date</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#8e8f90]">
                   <p className="truncate">المعاملة</p>
                   <p className="truncate">Treatmen</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#d0d1d2]">
+                <th className="bg-[#e6e7e8] py-1 w-[20%] border border-[#8e8f90]">
                   <p className="truncate">نسبة التركيز</p>
                   <p className="truncate">Concentration Rate</p>
                 </th>
@@ -612,9 +620,9 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.chemicals}</p>
+                    <p className="py-1">{certificate?.chemicals}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -625,9 +633,11 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.duration_and_temperature}</p>
+                    <p className="py-1">
+                      {certificate?.duration_and_temperature}
+                    </p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -640,9 +650,9 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.treatment_date}</p>
+                    <p className="py-1">{certificate?.treatment_date}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -653,9 +663,9 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2]">
+                <td className=" border border-[#8e8f90]">
                   {certificate?.id ? (
-                    <p>{certificate?.treatment}</p>
+                    <p className="py-1">{certificate?.treatment}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -666,9 +676,9 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className=" border border-[#d0d1d2] py-1 px-3">
+                <td className=" border border-[#8e8f90] py-1 px-3">
                   {certificate?.id ? (
-                    <p>{certificate?.concentration_rate}</p>
+                    <p className="py-1">{certificate?.concentration_rate}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -720,34 +730,34 @@ const AdminCRUCertificate = ({
 
         {/* table */}
         <div className="w-[87%] mx-auto text-[1.3vw]">
-          <table className="min-w-full border-collapse text-center border border-[#d0d1d2]">
+          <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] w-[15%] border border-[#d0d1d2] py-1">
+                <th className="bg-[#e6e7e8] w-[15%] border border-[#8e8f90] py-1">
                   <p>الاسم العلمي</p>
                   <p>Scientific Name</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[15%] border border-[#d0d1d2] py-1">
+                <th className="bg-[#e6e7e8] w-[15%] border border-[#8e8f90] py-1">
                   <p>الاسم العام</p>
                   <p>Common Name</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[10%] border border-[#d0d1d2] py-1">
+                <th className="bg-[#e6e7e8] w-[10%] border border-[#8e8f90] py-1">
                   <p>جهة المنشأ</p>
                   <p>Origin</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[10%] border border-[#d0d1d2] py-1">
+                <th className="bg-[#e6e7e8] w-[10%] border border-[#8e8f90] py-1">
                   <p>رقم الشهادة</p>
                   <p>PC No.</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[10%] border border-[#d0d1d2] py-1">
+                <th className="bg-[#e6e7e8] w-[10%] border border-[#8e8f90] py-1">
                   <p>الكمية</p>
                   <p>Quantity</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[15%] border border-[#d0d1d2] py-1">
+                <th className="bg-[#e6e7e8] w-[15%] border border-[#8e8f90] py-1">
                   <p>عدد الطرود</p>
                   <p>No. of Packages</p>
                 </th>
-                <th className="bg-[#e6e7e8] w-[15%] border border-[#d0d1d2] py-1">
+                <th className="bg-[#e6e7e8] w-[15%] border border-[#8e8f90] py-1">
                   <p>الصنف</p>
                   <p>Commodity Class</p>
                 </th>
@@ -766,25 +776,25 @@ const AdminCRUCertificate = ({
                       className="w-fit"
                       key={index}
                     >
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         {d?.scientificName}
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         {d?.commonName}
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         {d?.origin}
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         {d?.pcNo}
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         {d?.quantity}
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         {d?.noOfPackages}
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         {d?.commodityClass}
                       </td>
                     </tr>
@@ -800,7 +810,7 @@ const AdminCRUCertificate = ({
                       className="w-fit"
                       key={index}
                     >
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -814,7 +824,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -828,7 +838,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -842,7 +852,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -856,7 +866,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -870,7 +880,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -884,7 +894,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className=" border border-[#d0d1d2] py-1">
+                      <td className=" border border-[#8e8f90] py-1">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
