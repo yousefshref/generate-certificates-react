@@ -26,13 +26,13 @@ const CertificateLayout = ({
 
         {/* last section */}
         <div className="w-[87%] mt-[6vw] flex gap-2 justify-between mx-auto">
-          <div className="flex text-zinc-900 font-bold text-[1.7vw] w-[17%] h-fit flex-col">
+          <div className="flex text-zinc-900 font-bold text-[1.5vw] w-[17%] h-fit flex-col">
             <div className="text-center">
               <p>الختم الرسمي</p>
             </div>
-            <p className="text-[1.6vw]">Official Stamp</p>
+            <p className="text-[1.5vw]">Official Stamp</p>
           </div>
-          <div className="w-[87%] mx-auto text-[1.3vw] mt-3">
+          <div className="w-[87%] mx-auto text-[1.1vw] mt-3">
             <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
               <thead>
                 <tr>

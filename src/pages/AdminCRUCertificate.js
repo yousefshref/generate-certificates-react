@@ -200,7 +200,7 @@ const AdminCRUCertificate = ({
         {/* number and verification */}
         <div
           style={{ fontWeight: "400" }}
-          className="w-[87%] -mt-0.5 mx-auto flex text-[1.6vw] justify-between"
+          className="w-[87%] -mt-0.5 items-center mx-auto flex text-[1.5vw] justify-between"
         >
           <div className="flex flex-col text-start">
             <p>No.</p>
@@ -236,7 +236,7 @@ const AdminCRUCertificate = ({
         {/* number and verification */}
 
         {/* first table */}
-        <div className="w-[87%] mx-auto text-[1.3vw] mt-3">
+        <div className="w-[87%] mx-auto text-[1.3vw] mt-[1.2vw]">
           <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
             <thead>
               <tr>
@@ -557,7 +557,7 @@ const AdminCRUCertificate = ({
         {/* text */}
 
         {/* secound */}
-        <div className="w-[87%] text-[1.6vw] border border-[#8e8f90] mt-[0.5vw] flex flex-col mx-auto">
+        <div className="w-[87%] text-[1.5vw] border border-[#8e8f90] mt-[0.5vw] flex flex-col mx-auto">
           <div className="flex text-white justify-between bg-[#8e8f90] py-0.5 px-[2vw]">
             <p className="font-medium">II. Additional Declaration</p>
             <p>ثانيـــا: إقــــرار إضـــافى</p>
