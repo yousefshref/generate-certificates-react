@@ -558,7 +558,7 @@ const AdminCRUCertificate = ({
 
         {/* secound */}
         <div className="w-[87%] text-[1.6vw] border border-[#8e8f90] mt-[0.5vw] flex flex-col mx-auto">
-          <div className="flex text-white justify-between bg-[#8e8f90] py-0.5 px-3">
+          <div className="flex text-white justify-between bg-[#8e8f90] py-0.5 px-[2vw]">
             <p className="font-medium">II. Additional Declaration</p>
             <p>ثانيـــا: إقــــرار إضـــافى</p>
           </div>
