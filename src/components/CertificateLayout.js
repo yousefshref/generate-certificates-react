@@ -32,23 +32,23 @@ const CertificateLayout = ({
             </div>
             <p className="text-[1.5vw]">Official Stamp</p>
           </div>
-          <div className="w-[87%] mx-auto text-[1.1vw] mt-3">
-            <table className="min-w-full border-collapse text-center border border-[#8e8f90]">
+          <div className="w-[87%] mx-auto text-[1vw] mt-3">
+            <table className="min-w-full border-collapse text-center">
               <thead>
                 <tr>
-                  <th className="bg-[#e6e7e8] w-[25%] border border-[#8e8f90]">
+                  <th className="bg-[#e6e7e8] w-[25%] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>مكان الاصدار</p>
                     <p>Place of Issue</p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[18%] border border-[#8e8f90]">
+                  <th className="bg-[#e6e7e8] w-[18%] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>تاريخ الاصدار</p>
                     <p>Date of Issue</p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[20%] border border-[#8e8f90]">
+                  <th className="bg-[#e6e7e8] w-[20%] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>تاريخ الفحص</p>
                     <p>Date of Inspection</p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[60%] border border-[#8e8f90]">
+                  <th className="bg-[#e6e7e8] w-[60%] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>اسم وتوقيع الموظف المختص</p>
                     <p>Name & Signature of Authorized Officer</p>
                   </th>
@@ -56,9 +56,11 @@ const CertificateLayout = ({
               </thead>
               <tbody>
                 <tr>
-                  <td className=" border border-[#8e8f90] py-1 px-3">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
                     {certificate?.id ? (
-                      <p className="py-1">{certificate?.place_of_issue}</p>
+                      <p className="py-[0.4vw]">
+                        {certificate?.place_of_issue}
+                      </p>
                     ) : (
                       <textarea
                         type="text"
@@ -69,9 +71,9 @@ const CertificateLayout = ({
                       />
                     )}
                   </td>
-                  <td className=" border border-[#8e8f90] py-1 px-3">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
                     {certificate?.id ? (
-                      <p className="py-1">{certificate?.date_of_issue}</p>
+                      <p className="py-[0.4vw]">{certificate?.date_of_issue}</p>
                     ) : (
                       <textarea
                         type="text"
@@ -82,9 +84,11 @@ const CertificateLayout = ({
                       />
                     )}
                   </td>
-                  <td className=" border border-[#8e8f90] py-1 px-3">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
                     {certificate?.id ? (
-                      <p className="py-1">{certificate?.date_of_inspection}</p>
+                      <p className="py-[0.4vw]">
+                        {certificate?.date_of_inspection}
+                      </p>
                     ) : (
                       <textarea
                         type="text"
@@ -95,9 +99,9 @@ const CertificateLayout = ({
                       />
                     )}
                   </td>
-                  <td className=" border border-[#8e8f90] py-1 px-3">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
                     {certificate?.id ? (
-                      <p className="py-1">
+                      <p className="py-[0.4vw]">
                         {certificate?.name_and_signature_of_authorized_officer}
                       </p>
                     ) : (
