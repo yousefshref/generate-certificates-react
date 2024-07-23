@@ -200,7 +200,7 @@ const AdminCRUCertificate = ({
         {/* number and verification */}
         <div
           style={{ fontWeight: "400" }}
-          className="w-[87%] -mt-0.5 items-center mx-auto flex text-[1.5vw] justify-between"
+          className="w-[87%] md:mt-[1.5vw] mt-[1vw] items-center mx-auto flex text-[1.5vw] justify-between"
         >
           <div className="flex flex-col text-start">
             <p>No.</p>
@@ -598,7 +598,7 @@ const AdminCRUCertificate = ({
           </p>
         </div>
         {/*  */}
-        <div className="w-[87%] mt-[2vw] mx-auto text-[1.3vw]">
+        <div className="w-[87%] mx-auto text-[1.3vw]">
           <table className="min-w-full border-collapse text-center border md:border-[#8e8f90] border-[#8e8f90]/40">
             <thead>
               <tr>
