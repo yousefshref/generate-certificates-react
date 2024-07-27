@@ -16,7 +16,7 @@ const CertificateLayout = ({
 }) => {
   const host = window.location.host;
   return (
-    <div ref={refrence} className="w-[8.3in] h-[11.7in] relative">
+    <div ref={refrence} className="w-[8.3in] h-[11.7in] relative mx-auto">
       <div className="bg-white top-0 h-full w-full text-black">
         {/* header */}
         <img alt="header" src="/header.png" />
@@ -26,35 +26,35 @@ const CertificateLayout = ({
 
         {/* last section */}
         <div className="w-[87%] flex gap-2 mt-5 justify-between mx-auto">
-          <div className="flex text-zinc-900 font-bold text-[12px] w-[17%] h-fit flex-col">
+          <div className="flex text-zinc-900 font-normal mt-2 text-[12px] w-[17%] h-fit flex-col">
             <div className="text-center">
-              <p>الختم الرسمي</p>
+              <p className="font-bold">الختم الرسمي</p>
             </div>
-            <p className="text-[13px]">Official Stamp</p>
+            <p className="text-[13px] font-bold">Official Stamp</p>
           </div>
           <div className="w-[87%] ms-auto mt-3">
             <table className="min-w-full border-collapse text-center">
               <thead>
                 <tr>
-                  <th className="bg-[#e6e7e8] w-[23%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] border-b-0 w-[23%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>مكان الاصدار</p>
                     <p className="-mt-1 text-[12px] font-normal">
                       Place of Issue
                     </p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[18%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] border-b-0 w-[18%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>تاريخ الاصدار</p>
                     <p className="-mt-1 text-[12px] font-normal">
                       Date of Issue
                     </p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[20%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] border-b-0 w-[20%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>تاريخ الفحص</p>
                     <p className="-mt-1 text-[12px] font-normal">
                       Date of Inspection
                     </p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[62%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] border-b-0 w-[62%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>اسم وتوقيع الموظف المختص</p>
                     <p className="-mt-1 text-[12px] font-normal">
                       Name & Signature of Authorized Officer
@@ -64,7 +64,7 @@ const CertificateLayout = ({
               </thead>
               <tbody>
                 <tr>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
+                  <td className=" border border-t-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
                       <p className=" text-[10px]">
                         {certificate?.place_of_issue}
@@ -79,7 +79,7 @@ const CertificateLayout = ({
                       />
                     )}
                   </td>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
+                  <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
                       <p className=" text-[10px]">
                         {certificate?.date_of_issue}
@@ -94,7 +94,7 @@ const CertificateLayout = ({
                       />
                     )}
                   </td>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
+                  <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
                       <p className=" text-[10px]">
                         {certificate?.date_of_inspection}
@@ -109,7 +109,7 @@ const CertificateLayout = ({
                       />
                     )}
                   </td>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
+                  <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
                       <p className=" text-[10px]">
                         {certificate?.name_and_signature_of_authorized_officer}
@@ -134,7 +134,7 @@ const CertificateLayout = ({
         {/* footer */}
         <div className="relative mt-3.5">
           <img src={"/certificateFooter.png"} className=" text-[13px]" />
-          <div className="absolute items-center text-center left-[20px] h-[140px] flex flex-col justify-center w-[140px] bottom-[20px]">
+          <div className="absolute items-center text-center left-[23px] h-[130px] flex flex-col justify-center w-[130px] bottom-[22px]">
             {/* <p className="text-[1.3vw]">الباركود هنا بعد الانشاء</p> */}
             <QRCode
               style={{
