@@ -16,7 +16,7 @@ const CertificateLayout = ({
 }) => {
   const host = window.location.host;
   return (
-    <div ref={refrence} className="w-full relative">
+    <div ref={refrence} className="w-[8.3in] h-[11.7in] relative">
       <div className="bg-white top-0 h-full w-full text-black">
         {/* header */}
         <img alt="header" src="/header.png" />
@@ -25,89 +25,99 @@ const CertificateLayout = ({
         <div className="flex flex-col">{children}</div>
 
         {/* last section */}
-        <div className="w-[87%] mt-[6vw] flex gap-2 justify-between mx-auto">
-          <div className="flex text-zinc-900 font-bold text-[1.5vw] w-[17%] h-fit flex-col">
+        <div className="w-[87%] flex gap-2 mt-5 justify-between mx-auto">
+          <div className="flex text-zinc-900 font-bold text-[12px] w-[17%] h-fit flex-col">
             <div className="text-center">
               <p>الختم الرسمي</p>
             </div>
-            <p className="text-[1.5vw]">Official Stamp</p>
+            <p className="text-[13px]">Official Stamp</p>
           </div>
-          <div className="w-[87%] mx-auto text-[1vw] mt-3">
+          <div className="w-[87%] ms-auto mt-3">
             <table className="min-w-full border-collapse text-center">
               <thead>
                 <tr>
-                  <th className="bg-[#e6e7e8] w-[25%] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] w-[23%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>مكان الاصدار</p>
-                    <p>Place of Issue</p>
+                    <p className="-mt-1 text-[12px] font-normal">
+                      Place of Issue
+                    </p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[18%] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] w-[18%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>تاريخ الاصدار</p>
-                    <p>Date of Issue</p>
+                    <p className="-mt-1 text-[12px] font-normal">
+                      Date of Issue
+                    </p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[20%] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] w-[20%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>تاريخ الفحص</p>
-                    <p>Date of Inspection</p>
+                    <p className="-mt-1 text-[12px] font-normal">
+                      Date of Inspection
+                    </p>
                   </th>
-                  <th className="bg-[#e6e7e8] w-[60%] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                  <th className="bg-[#e6e7e8] w-[62%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
                     <p>اسم وتوقيع الموظف المختص</p>
-                    <p>Name & Signature of Authorized Officer</p>
+                    <p className="-mt-1 text-[12px] font-normal">
+                      Name & Signature of Authorized Officer
+                    </p>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
-                      <p className="py-[0.4vw]">
+                      <p className=" text-[10px]">
                         {certificate?.place_of_issue}
                       </p>
                     ) : (
                       <textarea
                         type="text"
-                        className="w-[100%] border-0"
+                        className="w-[100%] border-0 text-[10px]"
                         placeholder="Enter here..."
                         value={place}
                         onChange={(e) => setPlace(e.target.value)}
                       />
                     )}
                   </td>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
-                      <p className="py-[0.4vw]">{certificate?.date_of_issue}</p>
+                      <p className=" text-[10px]">
+                        {certificate?.date_of_issue}
+                      </p>
                     ) : (
                       <textarea
                         type="text"
-                        className="w-[100%] border-0"
+                        className="w-[100%] border-0 text-[10px]"
                         placeholder="Enter here..."
                         value={dateOfIssue}
                         onChange={(e) => setDateOfIssue(e.target.value)}
                       />
                     )}
                   </td>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
-                      <p className="py-[0.4vw]">
+                      <p className=" text-[10px]">
                         {certificate?.date_of_inspection}
                       </p>
                     ) : (
                       <textarea
                         type="text"
-                        className="w-[100%] border-0"
+                        className="w-[100%] border-0 text-[10px]"
                         placeholder="Enter here..."
                         value={dateOfInspection}
                         onChange={(e) => setDateOfInspection(e.target.value)}
                       />
                     )}
                   </td>
-                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 py-[0.4vw] px-[1vw]">
+                  <td className=" border md:border-[#8e8f90] border-[#8e8f90]/40 ">
                     {certificate?.id ? (
-                      <p className="py-[0.4vw]">
+                      <p className=" text-[10px]">
                         {certificate?.name_and_signature_of_authorized_officer}
                       </p>
                     ) : (
                       <textarea
                         type="text"
-                        className="w-[100%] border-0"
+                        className="w-[100%] border-0 text-[10px]"
                         placeholder="Enter here..."
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -122,9 +132,9 @@ const CertificateLayout = ({
         {/* last section */}
 
         {/* footer */}
-        <div className="relative">
-          <img src={"/certificateFooter.png"} className="" />
-          <div className="absolute items-center text-center left-[2.7vw] h-[15.5vw] flex flex-col justify-center w-[15.5vw] bottom-[3.2vw]">
+        <div className="relative mt-3.5">
+          <img src={"/certificateFooter.png"} className=" text-[13px]" />
+          <div className="absolute items-center text-center left-[20px] h-[140px] flex flex-col justify-center w-[140px] bottom-[20px]">
             {/* <p className="text-[1.3vw]">الباركود هنا بعد الانشاء</p> */}
             <QRCode
               style={{
