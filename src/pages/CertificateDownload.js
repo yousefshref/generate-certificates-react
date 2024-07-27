@@ -219,16 +219,7 @@ const CertificateDownload = () => {
           // const y = (pageHeight - renderHeight) / 2;
           const y = 0;
 
-          pdf.addImage(
-            images[i],
-            "PNG",
-            x,
-            y,
-            renderWidth,
-            renderHeight,
-            "",
-            "FAST"
-          );
+          pdf.addImage(images[i], "PNG", x, y, renderWidth, renderHeight);
         }
 
         // Save the PDF

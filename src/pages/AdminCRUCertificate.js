@@ -208,7 +208,7 @@ const AdminCRUCertificate = ({
           </div>
           <div className="flex flex-col text-center">
             {certificate?.id ? (
-              <p className="py-[0.4vw]">{certificate?.number}</p>
+              <p className="md:py-[0.4vw]">{certificate?.number}</p>
             ) : (
               <input
                 type="text"
@@ -218,7 +218,7 @@ const AdminCRUCertificate = ({
               />
             )}
             {certificate?.id ? (
-              <p className="py-[0.4vw]">{certificate?.verification_code}</p>
+              <p className="md:py-[0.4vw]">{certificate?.verification_code}</p>
             ) : (
               <input
                 type="text"

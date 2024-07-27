@@ -124,7 +124,7 @@ const CertificateLayout = ({
         {/* footer */}
         <div className="relative">
           <img src={"/certificateFooter.png"} className="" />
-          <div className="absolute items-center text-center left-[2.7vw] h-[14.5vw] flex flex-col justify-center w-[15vw] bottom-[3.2vw]">
+          <div className="absolute items-center text-center left-[2.7vw] h-[15.5vw] flex flex-col justify-center w-[15.5vw] bottom-[3.2vw]">
             {/* <p className="text-[1.3vw]">الباركود هنا بعد الانشاء</p> */}
             <QRCode
               style={{
