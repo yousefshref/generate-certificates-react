@@ -30,6 +30,8 @@ const AdminCRUCertificate = ({
   const [importPermitNo, setImportPermitNo] = useState("");
   const [declaredMeansOfConveyance, setDeclaredMeansOfConveyance] =
     useState("");
+  const [declaredMeansOfConveyanceLeft, setDeclaredMeansOfConveyanceLeft] =
+    useState("");
   const [endUsePurpose, setEndUsePurpose] = useState("");
 
   const [additionalDeclaration, setAdditionalDeclaration] = useState("");
@@ -64,6 +66,7 @@ const AdminCRUCertificate = ({
       total_quantity: totalQuantity,
       import_permit_no: importPermitNo,
       declared_means_of_conveyance: declaredMeansOfConveyance,
+      declared_means_of_conveyance_left: declaredMeansOfConveyanceLeft,
       end_use_purpose: endUsePurpose,
       additional_declaration: additionalDeclaration,
       name_and_signature_of_authorized_officer:
@@ -464,17 +467,35 @@ const AdminCRUCertificate = ({
                 </td>
                 <td className=" border-l-0 border-t-0">
                   {certificate?.id ? (
-                    <p>{certificate?.declared_means_of_conveyance}</p>
+                    <div className="flex text-center text-[12px]">
+                      <p className="w-[40%] text-center">
+                        {certificate?.declared_means_of_conveyance_left}
+                      </p>
+                      <p className="w-[60%] text-center border-l border-[#8e8f90]">
+                        {certificate?.declared_means_of_conveyance}
+                      </p>
+                    </div>
                   ) : (
-                    <textarea
-                      type="text"
-                      className="w-[100%] border-0"
-                      placeholder="Enter here..."
-                      value={declaredMeansOfConveyance}
-                      onChange={(e) =>
-                        setDeclaredMeansOfConveyance(e.target.value)
-                      }
-                    />
+                    <div className="flex text-center">
+                      <textarea
+                        type="text"
+                        className="w-[100%] border-0"
+                        placeholder="Enter here..."
+                        value={declaredMeansOfConveyanceLeft}
+                        onChange={(e) =>
+                          setDeclaredMeansOfConveyanceLeft(e.target.value)
+                        }
+                      />
+                      <textarea
+                        type="text"
+                        className="w-[100%] border-0"
+                        placeholder="Enter here..."
+                        value={declaredMeansOfConveyance}
+                        onChange={(e) =>
+                          setDeclaredMeansOfConveyance(e.target.value)
+                        }
+                      />
+                    </div>
                   )}
                 </td>
                 <td className="border border-b-0 border-t-0 md:border-[#8e8f90] border-[#8e8f90]/100">

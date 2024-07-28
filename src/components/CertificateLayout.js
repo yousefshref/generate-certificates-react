@@ -16,7 +16,10 @@ const CertificateLayout = ({
 }) => {
   const host = window.location.host;
   return (
-    <div ref={refrence} className="w-[21cm] h-[29.7cm] relative mx-auto">
+    <div
+      ref={refrence}
+      className="w-[21cm] h-[29.7cm] bg-red-200 relative mx-auto"
+    >
       <div className="bg-white top-0 h-full w-full text-black">
         {/* header */}
         <img alt="header" src="/header.png" />
