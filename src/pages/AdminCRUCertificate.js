@@ -635,23 +635,23 @@ const AdminCRUCertificate = ({
           <table className="min-w-full border-collapse text-center border border-[#8e8f90]/100">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] py-[0vw] w-[25%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-b-0 py-[0vw] w-[25%] border border-[#8e8f90]/100">
                   <p className="truncate">الكيماويات - المادة الفعالة</p>
                   <p className="truncate">Chemicals (Active Ingredients)</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-[0vw] w-[20%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-l-0 border-b-0 py-[0vw] w-[20%] border border-[#8e8f90]/100">
                   <p className="truncate">مدة العرض ودرجة الحرارة</p>
                   <p className="truncate">Duration & Temperature</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-[0vw] w-[15%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-l-0 border-b-0 py-[0vw] w-[15%] border border-[#8e8f90]/100">
                   <p className="truncate">تاريخ المعاملة</p>
                   <p className="truncate">Treatment Date</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-[0vw] w-[20%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-l-0 border-b-0 py-[0vw] w-[20%] border border-[#8e8f90]/100">
                   <p className="truncate">المعاملة</p>
                   <p className="truncate">Treatmen</p>
                 </th>
-                <th className="bg-[#e6e7e8] py-[0vw] w-[20%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-l-0 border-b-0 py-[0vw] w-[20%] border border-[#8e8f90]/100">
                   <p className="truncate">نسبة التركيز</p>
                   <p className="truncate">Concentration Rate</p>
                 </th>
@@ -659,7 +659,7 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className="border border-[#8e8f90]/100">
+                <td className="border border-[#8e8f90]/100 border-t-0">
                   {certificate?.id ? (
                     <p className="py-[0vw]">{certificate?.chemicals}</p>
                   ) : (
@@ -672,7 +672,7 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className="border border-[#8e8f90]/100">
+                <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
                   {certificate?.id ? (
                     <p className="py-[0vw]">
                       {certificate?.duration_and_temperature}
@@ -689,7 +689,7 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className="border border-[#8e8f90]/100">
+                <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
                   {certificate?.id ? (
                     <p className="py-[0vw]">{certificate?.treatment_date}</p>
                   ) : (
@@ -702,7 +702,7 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className="border border-[#8e8f90]/100">
+                <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
                   {certificate?.id ? (
                     <p className="py-[0vw]">{certificate?.treatment}</p>
                   ) : (
@@ -715,7 +715,7 @@ const AdminCRUCertificate = ({
                     />
                   )}
                 </td>
-                <td className="border border-[#8e8f90]/100 py-[0vw] px-3">
+                <td className="border border-[#8e8f90]/100 border-t-0 border-l-0 py-[0vw] px-3">
                   {certificate?.id ? (
                     <p className="py-[0vw]">
                       {certificate?.concentration_rate}
@@ -825,22 +825,22 @@ const AdminCRUCertificate = ({
                       <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         {d?.scientificName}
                       </td>
-                      <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         {d?.commonName}
                       </td>
-                      <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         {d?.origin}
                       </td>
-                      <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         {d?.pcNo}
                       </td>
-                      <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         {d?.quantity}
                       </td>
-                      <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         {d?.noOfPackages}
                       </td>
-                      <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         {d?.commodityClass}
                       </td>
                     </tr>
@@ -856,7 +856,7 @@ const AdminCRUCertificate = ({
                       className="w-fit"
                       key={index}
                     >
-                      <td className="border border-[#8e8f90]/100 py-[0vw]">
+                      <td className="border border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -870,7 +870,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className="border border-[#8e8f90]/100 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -884,7 +884,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className="border border-[#8e8f90]/100 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -898,7 +898,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className="border border-[#8e8f90]/100 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -912,7 +912,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className="border border-[#8e8f90]/100 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -926,7 +926,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className="border border-[#8e8f90]/100 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
@@ -940,7 +940,7 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
-                      <td className="border border-[#8e8f90]/100 py-[0vw]">
+                      <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 py-[0vw]">
                         <textarea
                           type="text"
                           placeholder="Enter here..."
