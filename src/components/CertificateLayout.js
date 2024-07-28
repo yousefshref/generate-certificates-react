@@ -16,7 +16,7 @@ const CertificateLayout = ({
 }) => {
   const host = window.location.host;
   return (
-    <div ref={refrence} className="w-[8.3in] h-[11.7in] relative mx-auto">
+    <div ref={refrence} className="w-[21cm] h-[29.7cm] relative mx-auto">
       <div className="bg-white top-0 h-full w-full text-black">
         {/* header */}
         <img alt="header" src="/header.png" />
@@ -38,25 +38,25 @@ const CertificateLayout = ({
                 <thead>
                   <tr>
                     <th className="bg-[#e6e7e8] border-b-0 w-[23%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
-                      <p>مكان الاصدار</p>
+                      <p className="font-normal">مكان الاصدار</p>
                       <p className="-mt-1 text-[12px] font-normal">
                         Place of Issue
                       </p>
                     </th>
                     <th className="bg-[#e6e7e8] border-b-0 w-[18%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
-                      <p>تاريخ الاصدار</p>
+                      <p className="font-normal">تاريخ الاصدار</p>
                       <p className="-mt-1 text-[12px] font-normal">
                         Date of Issue
                       </p>
                     </th>
                     <th className="bg-[#e6e7e8] border-b-0 w-[20%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
-                      <p>تاريخ الفحص</p>
+                      <p className="font-normal">تاريخ الفحص</p>
                       <p className="-mt-1 text-[12px] font-normal">
                         Date of Inspection
                       </p>
                     </th>
                     <th className="bg-[#e6e7e8] border-b-0 w-[62%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
-                      <p>اسم وتوقيع الموظف المختص</p>
+                      <p className="font-normal">اسم وتوقيع الموظف المختص</p>
                       <p className="-mt-1 text-[12px] font-normal">
                         Name & Signature of Authorized Officer
                       </p>
@@ -137,7 +137,7 @@ const CertificateLayout = ({
           {/* footer */}
           <div className="mt-3.5 relative bottom-0">
             <img src={"/certificateFooter.png"} className=" text-[13px]" />
-            <div className="absolute items-center text-center left-[23px] h-[130px] flex flex-col justify-center w-[130px] bottom-[22px]">
+            <div className="absolute items-center text-center left-[23px] h-[126px] flex flex-col justify-center w-[126px] bottom-[22px]">
               {/* <p className="text-[1.3vw]">الباركود هنا بعد الانشاء</p> */}
               <QRCode
                 style={{
