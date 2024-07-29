@@ -430,13 +430,13 @@ const AdminCRUCertificate = ({
                     Declared Means of Conveyance
                   </p>
                 </th>
-                <th className="bg-[#e6e7e8] pb-2  border-b-0 w-[18%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] pb-2  border-b-0 w-[20%] border border-[#8e8f90]/100">
                   <p className="font-normal">رقم إذن الاستيراد</p>
                   <p className="-mt-1 text-[10px] font-normal">
                     Import Permit No.
                   </p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0 pb-2 w-[13%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-l-0 border-b-0 pb-2 w-[15%] border border-[#8e8f90]/100">
                   <p className="font-normal">الكمية الكلية</p>
                   <p className="-mt-1 text-[10px] font-normal">
                     Total Quantity
