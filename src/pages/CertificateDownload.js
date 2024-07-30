@@ -161,7 +161,12 @@ const CertificateDownload = () => {
         // Hide the divs after capturing
         parent.current.classList.add("hidden");
 
-        const pdf = new jsPDF();
+        // const pdf = new jsPDF();
+        const pdf = new jsPDF({
+          unit: "in", // or 'pt', 'in', 'cm', 'mm'
+          format: "a4",
+          orientation: "portrait",
+        });
 
         // Function to load an image and return its dimensions
         const loadImage = (imageSrc) => {
@@ -219,7 +224,8 @@ const CertificateDownload = () => {
           // const y = (pageHeight - renderHeight) / 2;
           const y = 0;
 
-          pdf.addImage(images[i], "PNG", x, y, 210, 300);
+          // pdf.addImage(images[i], "PNG", x, y, 210, 300);
+          pdf.addImage(images[i], "PNG", 0, 0, 8.27, 11.69);
         }
 
         // Save the PDF

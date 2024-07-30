@@ -30,8 +30,26 @@ const Login = () => {
       .finally(() => setLoading(false));
   };
 
+  const getUser = async () => {
+    await axios
+      .get(`${server}api/user/`, {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((e) => {
+        if (e.data.id) {
+          navigate("/dashboard/");
+        }
+      })
+      .catch((e) => {
+        localStorage.removeItem("token");
+        navigate("/");
+      });
+  };
+
   useEffect(() => {
-    if (localStorage.getItem("token")) navigate("/dashboard/");
+    getUser();
   }, []);
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

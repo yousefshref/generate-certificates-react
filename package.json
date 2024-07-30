@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@azure/msal-browser": "^3.19.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "@react-pdf/renderer": "^3.4.4",
     "@testing-library/jest-dom": "^5.17.0",

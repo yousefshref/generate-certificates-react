@@ -205,11 +205,11 @@ const AdminCRUCertificate = ({
           style={{ fontWeight: "400" }}
           className="w-[87%] mb-2 tex-[10px] items-center mx-auto flex text-[12px] justify-between"
         >
-          <div className="flex flex-col text-start">
+          <div className="flex flex-col gap-2 text-start">
             <p>No.</p>
             <p>Verification Code</p>
           </div>
-          <div className="flex flex-col text-center">
+          <div className="flex flex-col gap-2 text-center">
             {certificate?.id ? (
               <p>{certificate?.number}</p>
             ) : (
@@ -231,7 +231,7 @@ const AdminCRUCertificate = ({
               />
             )}
           </div>
-          <div className="flex flex-col text-end">
+          <div className="flex flex-col gap-2 text-end">
             <p>الرقم</p>
             <p>رمز التحقق</p>
           </div>
