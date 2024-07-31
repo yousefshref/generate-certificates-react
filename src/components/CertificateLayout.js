@@ -28,7 +28,7 @@ const CertificateLayout = ({
         <div className="flex flex-col">{children}</div>
 
         {/* last section */}
-        <div className="absolute top-[8.8in]">
+        <div className="absolute bottom-0">
           <div className="w-[87%] flex gap-2 mt-5 justify-between mx-auto">
             <div className="flex text-zinc-900 font-normal mt-2 text-[12px] w-[17%] h-fit flex-col">
               <div className="text-center">
