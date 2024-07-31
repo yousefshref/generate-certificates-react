@@ -20,7 +20,7 @@ const CertificateLayout = ({
       ref={refrence}
       className="w-[8.27in] h-[11.69in] mt-20 scale-105 relative mx-auto"
     >
-      <div className="bg-red-300 top-0 h-full w-full text-black">
+      <div className="bg-white top-0 h-full w-full text-black">
         {/* header */}
         <img alt="header" src="/header.png" />
         {/* header */}
