@@ -225,7 +225,7 @@ const CertificateDownload = () => {
           const y = 0;
 
           // pdf.addImage(images[i], "PNG", x, y, 210, 300);
-          pdf.addImage(images[i], "PNG", 0, 0.1, 8.27, 11.69);
+          pdf.addImage(images[i], "PNG", 0, 0, 8.27, 11.69);
         }
 
         // Save the PDF
