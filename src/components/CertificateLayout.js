@@ -18,9 +18,9 @@ const CertificateLayout = ({
   return (
     <div
       ref={refrence}
-      className="w-[8.27in] h-[11.69in] scale-105 bg-red-200 relative mx-auto"
+      className="w-[8.27in] h-[11.69in] mt-20 scale-105 relative mx-auto"
     >
-      <div className="bg-white top-0 h-full w-full text-black">
+      <div className="bg-red-300 top-0 h-full w-full text-black">
         {/* header */}
         <img alt="header" src="/header.png" />
         {/* header */}
@@ -28,7 +28,7 @@ const CertificateLayout = ({
         <div className="flex flex-col">{children}</div>
 
         {/* last section */}
-        <div className="absolute bottom-0">
+        <div className="absolute top-[8.8in]">
           <div className="w-[87%] flex gap-2 mt-5 justify-between mx-auto">
             <div className="flex text-zinc-900 font-normal mt-2 text-[12px] w-[17%] h-fit flex-col">
               <div className="text-center">
