@@ -18,7 +18,7 @@ const CertificateLayout = ({
   return (
     <div
       ref={refrence}
-      className="w-[21cm] h-[29.7cm] bg-red-200 relative mx-auto"
+      className="w-[8.27in] h-[11.69in] scale-105 bg-red-200 relative mx-auto"
     >
       <div className="bg-white top-0 h-full w-full text-black">
         {/* header */}
