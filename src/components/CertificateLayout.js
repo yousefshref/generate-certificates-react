@@ -13,6 +13,7 @@ const CertificateLayout = ({
   setPlace,
   certificate,
   refrence,
+  isUpdate,
 }) => {
   const host = window.location.host;
   return (
@@ -69,7 +70,7 @@ const CertificateLayout = ({
                 <tbody>
                   <tr>
                     <td className=" border border-t-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
-                      {certificate?.id ? (
+                      {certificate?.id && !isUpdate ? (
                         <p className=" text-[10px]">
                           {certificate?.place_of_issue}
                         </p>
@@ -84,7 +85,7 @@ const CertificateLayout = ({
                       )}
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
-                      {certificate?.id ? (
+                      {certificate?.id && !isUpdate ? (
                         <p className=" text-[10px]">
                           {certificate?.date_of_issue}
                         </p>
@@ -99,7 +100,7 @@ const CertificateLayout = ({
                       )}
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
-                      {certificate?.id ? (
+                      {certificate?.id && !isUpdate ? (
                         <p className=" text-[10px]">
                           {certificate?.date_of_inspection}
                         </p>
@@ -114,7 +115,7 @@ const CertificateLayout = ({
                       )}
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
-                      {certificate?.id ? (
+                      {certificate?.id && !isUpdate ? (
                         <p className=" text-[10px]">
                           {
                             certificate?.name_and_signature_of_authorized_officer
@@ -147,7 +148,9 @@ const CertificateLayout = ({
                   width: "100%",
                   height: "100%",
                 }}
-                value={`https://e-services-seven.vercel.app/view-certificate/${certificate?.id}/download/`}
+                value={`https://e-services-seven.vercel.app/view-certificate/${
+                  certificate?.id && !isUpdate
+                }/download/`}
               />
             </div>
           </div>

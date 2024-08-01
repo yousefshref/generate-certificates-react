@@ -25,13 +25,13 @@ function App() {
       />
 
       <Route
-        path="/view-certificate/:ID/download/"
-        element={<CertificateDownload />}
+        path="/view-certificate/:ID/update/"
+        element={<AdminCRUCertificate />}
       />
 
       <Route
-        path="/view-certificate/:ID/check-download/"
-        element={<AdminCRUCertificate download />}
+        path="/view-certificate/:ID/download/"
+        element={<CertificateDownload />}
       />
     </Routes>
   );

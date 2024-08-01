@@ -3,7 +3,7 @@ import CertificateLayout from "../components/CertificateLayout";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { server } from "../utlits/Variables";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -94,8 +94,10 @@ const AdminCRUCertificate = ({
       });
   };
 
-  const [certificate, setCertificate] = useState({});
+  const location = useLocation();
+  const isUpdate = location.search === "?update=true";
 
+  const [certificate, setCertificate] = useState({});
   const params = useParams();
 
   const getCertificate = async () => {
@@ -107,13 +109,46 @@ const AdminCRUCertificate = ({
     });
     const data = await response.json();
     setCertificate(data);
+    return data;
   };
 
   useEffect(() => {
-    if (view) {
-      getCertificate();
+    if (view || isUpdate) {
+      getCertificate().then((data) => {
+        setNumber(data.number);
+        setVerificationCode(data.verification_code);
+        setFrm(data.frm);
+        setTo(data.to);
+        setNameAddressOfExporter(data.name_address_of_exporter);
+        setNameAddressOfImporter(data.name_address_of_importer);
+        setDistinguishingMarks(data.distinguishing_marks);
+        setDeclaredPointOfEntry(data.declared_point_of_entry);
+        setTotalNmOfPackages(data.total_nm_of_packages);
+        setTotalQuantity(data.total_quantity);
+        setImportPermitNo(data.import_permit_no);
+        setDeclaredMeansOfConveyance(data.declared_means_of_conveyance);
+        setDeclaredMeansOfConveyanceLeft(
+          data.declared_means_of_conveyance_left
+        );
+        setEndUsePurpose(data.end_use_purpose);
+        setAdditionalDeclaration(data.additional_declaration);
+        setNameAndSignatureOfAuthorizedOfficer(
+          data.name_and_signature_of_authorized_officer
+        );
+        setDateOfInspection(data.date_of_inspection);
+        setDateOfIssue(data.date_of_issue);
+        setPlaceOfIssue(data.place_of_issue);
+        setConcentrationRate(data.concentration_rate);
+        setTreatment(data.treatment);
+        setTreatmentDate(data.treatment_date);
+        setDurationAndTemperature(data.duration_and_temperature);
+        setChemicals(data.chemicals);
+        setData(JSON.parse(data.data));
+      });
     }
-  }, []);
+  }, [view, isUpdate]);
+
+  console.log(certificate);
 
   const [user, setUser] = useState({});
 
@@ -181,6 +216,48 @@ const AdminCRUCertificate = ({
     } catch (error) {}
   };
 
+  const updateCertificate = async () => {
+    const d = {
+      number,
+      verification_code: verificationCode,
+      frm,
+      to,
+      name_address_of_exporter: nameAddressOfExporter,
+      name_address_of_importer: nameAddressOfImporter,
+      distinguishing_marks: distinguishingMarks,
+      declared_point_of_entry: declaredPointOfEntry,
+      total_nm_of_packages: totalNmOfPackages,
+      total_quantity: totalQuantity,
+      import_permit_no: importPermitNo,
+      declared_means_of_conveyance: declaredMeansOfConveyance,
+      declared_means_of_conveyance_left: declaredMeansOfConveyanceLeft,
+      end_use_purpose: endUsePurpose,
+      additional_declaration: additionalDeclaration,
+      name_and_signature_of_authorized_officer:
+        nameAndSignatureOfAuthorizedOfficer,
+      date_of_inspection: dateOfInspection,
+      date_of_issue: dateOfIssue,
+      place_of_issue: placeOfIssue,
+      concentration_rate: concentrationRate,
+      treatment: treatment,
+      treatment_date: treatmentDate,
+      duration_and_temperature: durationAndTemperature,
+      chemicals: chemicals,
+      data: JSON.stringify(data),
+    };
+    await axios
+      .put(`${server}api/certificates/${params.ID}/`, d, {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        if (res.data.id) {
+          window.location.href = `/dashboard/`;
+        }
+      });
+  };
+
   return (
     <div
       className={`flex ${noPadding ? "gap-1" : ""} ${
@@ -199,6 +276,7 @@ const AdminCRUCertificate = ({
         place={placeOfIssue}
         setPlace={setPlaceOfIssue}
         refrence={div1Ref ? div1Ref : div1Ref_}
+        isUpdate={isUpdate}
       >
         {/* number and verification */}
         <div
@@ -210,7 +288,7 @@ const AdminCRUCertificate = ({
             <p>Verification Code</p>
           </div>
           <div className="flex flex-col gap-2 text-center">
-            {certificate?.id ? (
+            {certificate?.id && !isUpdate ? (
               <p>{certificate?.number}</p>
             ) : (
               <input
@@ -220,7 +298,7 @@ const AdminCRUCertificate = ({
                 onChange={(e) => setNumber(e.target.value)}
               />
             )}
-            {certificate?.id ? (
+            {certificate?.id && !isUpdate ? (
               <p>{certificate?.verification_code}</p>
             ) : (
               <input
@@ -260,7 +338,7 @@ const AdminCRUCertificate = ({
             <tbody>
               <tr>
                 <td className="border border-t-0 border-[#8e8f90]/100 ">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="font-normal">{certificate?.frm}</p>
                   ) : (
                     <textarea
@@ -273,7 +351,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-t-0 border-l-0 border-[#8e8f90]/100">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="font-normal">{certificate?.to}</p>
                   ) : (
                     <textarea
@@ -327,7 +405,7 @@ const AdminCRUCertificate = ({
                   }}
                   className="border border-t-0 border-[#8e8f90]/100 "
                 >
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="font-normal">
                       {certificate?.name_address_of_exporter}
                     </p>
@@ -342,7 +420,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-l-0 border-t-0 border-[#8e8f90]/100">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p>{certificate?.name_address_of_importer}</p>
                   ) : (
                     <textarea
@@ -381,7 +459,7 @@ const AdminCRUCertificate = ({
             <tbody>
               <tr>
                 <td className="border border-t-0 border-[#8e8f90]/100 pb-2">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p>{certificate?.distinguishing_marks}</p>
                   ) : (
                     <textarea
@@ -394,7 +472,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-t-0 border-l-0 border-[#8e8f90]/100 pb-2">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p>{certificate?.declared_point_of_entry}</p>
                   ) : (
                     <textarea
@@ -453,7 +531,7 @@ const AdminCRUCertificate = ({
             <tbody>
               <tr>
                 <td className="border border-b-0 border-t-0 border-[#8e8f90]/100 ">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p>{certificate?.end_use_purpose}</p>
                   ) : (
                     <textarea
@@ -466,7 +544,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className=" border-l-0 border-t-0">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <div className="flex text-center text-[12px]">
                       <p className="w-[40%] text-center">
                         {certificate?.declared_means_of_conveyance_left}
@@ -499,7 +577,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-b-0 border-t-0 md:border-[#8e8f90] border-[#8e8f90]/100">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p>{certificate?.import_permit_no}</p>
                   ) : (
                     <textarea
@@ -512,7 +590,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-l-0 border-b-0  border-t-0 md:border-[#8e8f90] border-[#8e8f90]/100">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p>{certificate?.total_quantity}</p>
                   ) : (
                     <textarea
@@ -525,7 +603,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border  border-l-0 border-b-0 border-t-0 md:border-[#8e8f90] border-[#8e8f90]/100">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p>{certificate?.total_nm_of_packages}</p>
                   ) : (
                     <textarea
@@ -680,7 +758,7 @@ const AdminCRUCertificate = ({
             <tbody>
               <tr>
                 <td className="border border-[#8e8f90]/100 border-t-0">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="pb-2">{certificate?.chemicals}</p>
                   ) : (
                     <textarea
@@ -693,7 +771,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="pb-2">
                       {certificate?.duration_and_temperature}
                     </p>
@@ -710,7 +788,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="pb-2">{certificate?.treatment_date}</p>
                   ) : (
                     <textarea
@@ -723,7 +801,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="pb-2">{certificate?.treatment}</p>
                   ) : (
                     <textarea
@@ -736,7 +814,7 @@ const AdminCRUCertificate = ({
                   )}
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0 pb-2 px-3">
-                  {certificate?.id ? (
+                  {certificate?.id && !isUpdate ? (
                     <p className="pb-2">{certificate?.concentration_rate}</p>
                   ) : (
                     <textarea
@@ -828,7 +906,7 @@ const AdminCRUCertificate = ({
               </tr>
             </thead>
             <tbody>
-              {certificate?.id
+              {certificate?.id && !isUpdate
                 ? JSON.parse(certificate?.data)?.map((d, index) => (
                     <tr
                       onDoubleClick={() => {
@@ -998,7 +1076,7 @@ const AdminCRUCertificate = ({
       <br />
       <br />
 
-      {!view && (
+      {!view && !isUpdate ? (
         <>
           <br />
           <br />
@@ -1009,6 +1087,21 @@ const AdminCRUCertificate = ({
           >
             Create
           </button>
+        </>
+      ) : null}
+      {isUpdate && (
+        <>
+          <br />
+          <br />
+          <br />
+          <button
+            onClick={updateCertificate}
+            className="w-[8.3in] mx-auto bg-[#4fc045] text-white font-normal py-2 px-4 rounded"
+          >
+            Update
+          </button>
+          <br />
+          <br />
         </>
       )}
       {view && user?.id ? (
