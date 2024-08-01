@@ -82,6 +82,62 @@ const CertificateDownload = () => {
         text: "5H68B8",
         image: "/captcha/c12.jpeg",
       },
+      {
+        text: "869M79",
+        image: "/captcha/c13.jpg",
+      },
+      {
+        text: "786LE7",
+        image: "/captcha/c14.jpg",
+      },
+      {
+        text: "869C9A",
+        image: "/captcha/c16.jpg",
+      },
+      {
+        text: "KCHBM5",
+        image: "/captcha/c17.jpg",
+      },
+      {
+        text: "85HK5D",
+        image: "/captcha/c18.jpg",
+      },
+      {
+        text: "BD9696",
+        image: "/captcha/c19.jpg",
+      },
+      {
+        text: "H9MAJ7",
+        image: "/captcha/c20.jpg",
+      },
+      {
+        text: "C9819K",
+        image: "/captcha/c21.jpg",
+      },
+      {
+        text: "EH8867",
+        image: "/captcha/c22.jpg",
+      },
+      {
+        text: "J6K6C9",
+        image: "/captcha/c23.jpg",
+      },
+      {
+        text: "B96855",
+        image: "/captcha/c24.jpg",
+      },
+      {
+        text: "H8D8KG",
+        image: "/captcha/c25.jpg",
+      },
+      {
+        text: "9796G8",
+        image: "/captcha/c26.jpg",
+      },
+      {
+        text: "95D576",
+        image: "/captcha/c27.jpg",
+      },
     ];
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setCaptcha(randomImage);
