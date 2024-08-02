@@ -351,7 +351,7 @@ const AdminCRUCertificate = ({
               />
             )}
           </div>
-          <div className="flex flex-col gap-2 text-end">
+          <div className="flex flex-col gap-0.5 text-end">
             <p>الرقم</p>
             <p>رمز التحقق</p>
           </div>
@@ -769,31 +769,35 @@ const AdminCRUCertificate = ({
           <table className="min-w-full border-collapse text-center border-t-0 border border-[#8e8f90]/100">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] border-b-0 w-[25%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] pb-2 border-b-0 w-[25%] border border-[#8e8f90]/100">
                   <p className="truncate font-normal">
                     الكيماويات - المادة الفعالة
                   </p>
-                  <p className="truncate font-normal">
+                  <p className="truncate font-normal -mt-1">
                     Chemicals (Active Ingredients)
                   </p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[20%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] pb-2 border-l-0 border-b-0  w-[20%] border border-[#8e8f90]/100">
                   <p className="truncate font-normal">
                     مدة العرض ودرجة الحرارة
                   </p>
-                  <p className="truncate font-normal">Duration & Temperature</p>
+                  <p className="truncate font-normal -mt-1">
+                    Duration & Temperature
+                  </p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[15%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] pb-2 border-l-0 border-b-0  w-[15%] border border-[#8e8f90]/100">
                   <p className="truncate font-normal">تاريخ المعاملة</p>
-                  <p className="truncate font-normal">Treatment Date</p>
+                  <p className="truncate font-normal -mt-1">Treatment Date</p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[15%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] pb-2 border-l-0 border-b-0  w-[15%] border border-[#8e8f90]/100">
                   <p className="truncate font-normal">المعاملة</p>
-                  <p className="truncate font-normal">Treatmen</p>
+                  <p className="truncate font-normal -mt-1">Treatmen</p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[22%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] pb-2 border-l-0 border-b-0  w-[22%] border border-[#8e8f90]/100">
                   <p className="truncate font-normal">نسبة التركيز</p>
-                  <p className="truncate font-normal">Concentration Rate</p>
+                  <p className="truncate font-normal -mt-1">
+                    Concentration Rate
+                  </p>
                 </th>
               </tr>
             </thead>
@@ -801,7 +805,7 @@ const AdminCRUCertificate = ({
               <tr>
                 <td className="border border-[#8e8f90]/100 border-t-0">
                   {certificate?.id && !isUpdate ? (
-                    <p className="pb-2">{certificate?.chemicals}</p>
+                    <p className="pb-0.5">{certificate?.chemicals}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -814,7 +818,7 @@ const AdminCRUCertificate = ({
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
                   {certificate?.id && !isUpdate ? (
-                    <p className="pb-2">
+                    <p className="pb-0.5">
                       {certificate?.duration_and_temperature}
                     </p>
                   ) : (
@@ -831,7 +835,7 @@ const AdminCRUCertificate = ({
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
                   {certificate?.id && !isUpdate ? (
-                    <p className="pb-2">{certificate?.treatment_date}</p>
+                    <p className="pb-0.5">{certificate?.treatment_date}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -844,7 +848,7 @@ const AdminCRUCertificate = ({
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0">
                   {certificate?.id && !isUpdate ? (
-                    <p className="pb-2">{certificate?.treatment}</p>
+                    <p className="pb-0.5">{certificate?.treatment}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
@@ -857,7 +861,7 @@ const AdminCRUCertificate = ({
                 </td>
                 <td className="border border-[#8e8f90]/100 border-t-0 border-l-0  px-3">
                   {certificate?.id && !isUpdate ? (
-                    <p className="pb-2">{certificate?.concentration_rate}</p>
+                    <p className="pb-0.5">{certificate?.concentration_rate}</p>
                   ) : (
                     <textarea
                       className="w-[100%]"
