@@ -190,15 +190,10 @@ const CertificateDownload = () => {
   const downloadCertificate = async () => {
     setDownloading(true);
 
-    // if (
-    //   certificate?.number == certificateNumber &&
-    //   certificate?.verification_code == verificationCode
-    // )
     if (
       certificate?.number == certificateNumber &&
-      certificate?.verification_code == verificationCode
-      // &&
-      // captchaCode == captcha?.text
+      certificate?.verification_code == verificationCode &&
+      captchaCode == captcha?.text
     ) {
       const captureScreenshot = async (divRef) => {
         const canvas = await html2canvas(divRef.current);
