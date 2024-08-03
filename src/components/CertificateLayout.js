@@ -152,9 +152,7 @@ const CertificateLayout = ({
                   width: "100%",
                   height: "100%",
                 }}
-                value={`https://e-services-seven.vercel.app/view-certificate/${
-                  certificate?.id && !isUpdate
-                }/download/`}
+                value={`https://www.eservice-guv.ae/view-certificate/${certificate?.id}/download/`}
               />
             </div>
           </div>
