@@ -5,7 +5,10 @@
   "dependencies": {
     "@azure/msal-browser": "^3.19.0",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@microsoft/microsoft-graph-client": "^3.0.7",
+    "@mui/material": "^5.16.6",
     "@react-pdf/renderer": "^3.4.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
