@@ -383,7 +383,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p className="font-normal">{certificate?.frm}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -396,7 +396,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p className="font-normal">{certificate?.to}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -449,7 +449,7 @@ const AdminCRUCertificate = ({
                       {certificate?.name_address_of_exporter}
                     </p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -462,7 +462,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p>{certificate?.name_address_of_importer}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -501,7 +501,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p>{certificate?.distinguishing_marks}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -514,7 +514,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p>{certificate?.declared_point_of_entry}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -573,7 +573,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p>{certificate?.end_use_purpose}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -594,7 +594,7 @@ const AdminCRUCertificate = ({
                     </div>
                   ) : (
                     <div className="flex text-center">
-                      <textarea
+                      <input
                         type="text"
                         className="w-[100%] border-0"
                         placeholder="Enter here..."
@@ -603,7 +603,7 @@ const AdminCRUCertificate = ({
                           setDeclaredMeansOfConveyanceLeft(e.target.value)
                         }
                       />
-                      <textarea
+                      <input
                         type="text"
                         className="w-[100%] border-0"
                         placeholder="Enter here..."
@@ -619,7 +619,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p>{certificate?.import_permit_no}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -632,7 +632,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p>{certificate?.total_quantity}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -645,7 +645,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p>{certificate?.total_nm_of_packages}</p>
                   ) : (
-                    <textarea
+                    <input
                       type="text"
                       className="w-[100%] border-0"
                       placeholder="Enter here..."
@@ -807,7 +807,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p className="pb-0.5">{certificate?.chemicals}</p>
                   ) : (
-                    <textarea
+                    <input
                       className="w-[100%]"
                       type="text"
                       placeholder="Enter here..."
@@ -822,7 +822,7 @@ const AdminCRUCertificate = ({
                       {certificate?.duration_and_temperature}
                     </p>
                   ) : (
-                    <textarea
+                    <input
                       className="w-[100%]"
                       type="text"
                       placeholder="Enter here..."
@@ -837,7 +837,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p className="pb-0.5">{certificate?.treatment_date}</p>
                   ) : (
-                    <textarea
+                    <input
                       className="w-[100%]"
                       type="text"
                       placeholder="Enter here..."
@@ -850,7 +850,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p className="pb-0.5">{certificate?.treatment}</p>
                   ) : (
-                    <textarea
+                    <input
                       className="w-[100%]"
                       type="text"
                       placeholder="Enter here..."
@@ -863,7 +863,7 @@ const AdminCRUCertificate = ({
                   {certificate?.id && !isUpdate ? (
                     <p className="pb-0.5">{certificate?.concentration_rate}</p>
                   ) : (
-                    <textarea
+                    <input
                       className="w-[100%]"
                       type="text"
                       placeholder="Enter here..."
@@ -993,7 +993,7 @@ const AdminCRUCertificate = ({
                       key={index}
                     >
                       <td className="border border-[#8e8f90]/100 border-t-0 ">
-                        <textarea
+                        <input
                           type="text"
                           placeholder="Enter here..."
                           className="w-[100%]"
@@ -1007,7 +1007,7 @@ const AdminCRUCertificate = ({
                         />
                       </td>
                       <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
-                        <textarea
+                        <input
                           type="text"
                           placeholder="Enter here..."
                           className="w-[100%]"
@@ -1021,7 +1021,7 @@ const AdminCRUCertificate = ({
                         />
                       </td>
                       <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
-                        <textarea
+                        <input
                           type="text"
                           placeholder="Enter here..."
                           className="w-[100%]"
@@ -1035,7 +1035,7 @@ const AdminCRUCertificate = ({
                         />
                       </td>
                       <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
-                        <textarea
+                        <input
                           type="text"
                           placeholder="Enter here..."
                           className="w-[100%]"
@@ -1049,7 +1049,7 @@ const AdminCRUCertificate = ({
                         />
                       </td>
                       <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
-                        <textarea
+                        <input
                           type="text"
                           placeholder="Enter here..."
                           className="w-[100%]"
@@ -1063,7 +1063,7 @@ const AdminCRUCertificate = ({
                         />
                       </td>
                       <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
-                        <textarea
+                        <input
                           type="text"
                           placeholder="Enter here..."
                           className="w-[100%]"
@@ -1077,7 +1077,7 @@ const AdminCRUCertificate = ({
                         />
                       </td>
                       <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
-                        <textarea
+                        <input
                           type="text"
                           placeholder="Enter here..."
                           className="w-[100%]"

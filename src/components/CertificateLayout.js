@@ -75,7 +75,7 @@ const CertificateLayout = ({
                           {certificate?.place_of_issue}
                         </p>
                       ) : (
-                        <textarea
+                        <input
                           type="text"
                           className="w-[100%] border-0 text-[9pt]"
                           placeholder="Enter here..."
@@ -90,7 +90,7 @@ const CertificateLayout = ({
                           {certificate?.date_of_issue}
                         </p>
                       ) : (
-                        <textarea
+                        <input
                           type="text"
                           className="w-[100%] border-0 text-[9pt]"
                           placeholder="Enter here..."
@@ -105,7 +105,7 @@ const CertificateLayout = ({
                           {certificate?.date_of_inspection}
                         </p>
                       ) : (
-                        <textarea
+                        <input
                           type="text"
                           className="w-[100%] border-0 text-[9pt]"
                           placeholder="Enter here..."
@@ -122,7 +122,7 @@ const CertificateLayout = ({
                           }
                         </p>
                       ) : (
-                        <textarea
+                        <input
                           type="text"
                           className="w-[100%] border-0 text-[9pt]"
                           placeholder="Enter here..."
