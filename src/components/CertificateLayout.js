@@ -14,6 +14,8 @@ const CertificateLayout = ({
   certificate,
   refrence,
   isUpdate,
+  underTableFontSize,
+  setUnderTableFontSize,
 }) => {
   const host = window.location.host;
   return (
@@ -35,33 +37,32 @@ const CertificateLayout = ({
               <div className="text-center">
                 <p className="font-bold">الختم الرسمي</p>
               </div>
-              <p className="text-[13px] font-bold">Official Stamp</p>
+              <p className=" font-bold">Official Stamp</p>
             </div>
-            <div className="w-[87%] ms-auto mt-3">
+            <div
+              style={{
+                fontSize: `${underTableFontSize}px`,
+              }}
+              className={`w-[87%] ms-auto mt-3`}
+            >
               <table className="min-w-full border-collapse text-center">
                 <thead>
                   <tr>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[23%] text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[23%]  border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">مكان الاصدار</p>
-                      <p className="-mt-1 text-[12px] font-normal">
-                        Place of Issue
-                      </p>
+                      <p className="-mt-1  font-normal">Place of Issue</p>
                     </th>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[18%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[18%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">تاريخ الاصدار</p>
-                      <p className="-mt-1 text-[12px] font-normal">
-                        Date of Issue
-                      </p>
+                      <p className="-mt-1  font-normal">Date of Issue</p>
                     </th>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[20%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[20%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">تاريخ الفحص</p>
-                      <p className="-mt-1 text-[12px] font-normal">
-                        Date of Inspection
-                      </p>
+                      <p className="-mt-1  font-normal">Date of Inspection</p>
                     </th>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[62%] border-l-0 text-[13px] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[62%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">اسم وتوقيع الموظف المختص</p>
-                      <p className="-mt-1 text-[12px] font-normal">
+                      <p className="-mt-1  font-normal">
                         Name & Signature of Authorized Officer
                       </p>
                     </th>
@@ -71,13 +72,11 @@ const CertificateLayout = ({
                   <tr>
                     <td className=" border border-t-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" text-[9pt]">
-                          {certificate?.place_of_issue}
-                        </p>
+                        <p className=" ">{certificate?.place_of_issue}</p>
                       ) : (
                         <input
                           type="text"
-                          className="w-[100%] border-0 text-[9pt]"
+                          className="w-[100%] border-0 "
                           placeholder="Enter here..."
                           value={place}
                           onChange={(e) => setPlace(e.target.value)}
@@ -86,13 +85,11 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" text-[9pt]">
-                          {certificate?.date_of_issue}
-                        </p>
+                        <p className=" ">{certificate?.date_of_issue}</p>
                       ) : (
                         <input
                           type="text"
-                          className="w-[100%] border-0 text-[9pt]"
+                          className="w-[100%] border-0 "
                           placeholder="Enter here..."
                           value={dateOfIssue}
                           onChange={(e) => setDateOfIssue(e.target.value)}
@@ -101,13 +98,11 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" text-[9pt]">
-                          {certificate?.date_of_inspection}
-                        </p>
+                        <p className=" ">{certificate?.date_of_inspection}</p>
                       ) : (
                         <input
                           type="text"
-                          className="w-[100%] border-0 text-[9pt]"
+                          className="w-[100%] border-0 "
                           placeholder="Enter here..."
                           value={dateOfInspection}
                           onChange={(e) => setDateOfInspection(e.target.value)}
@@ -116,7 +111,7 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" text-[9pt]">
+                        <p className=" ">
                           {
                             certificate?.name_and_signature_of_authorized_officer
                           }
@@ -124,7 +119,7 @@ const CertificateLayout = ({
                       ) : (
                         <input
                           type="text"
-                          className="w-[100%] border-0 text-[9pt]"
+                          className="w-[100%] border-0 "
                           placeholder="Enter here..."
                           value={name}
                           onChange={(e) => setName(e.target.value)}
@@ -140,11 +135,8 @@ const CertificateLayout = ({
 
           {/* footer */}
           <div className="mt-3.5 relative bottom-0">
-            {/* <img src={"/certificateFooter.png"} className=" text-[13px]" /> */}
-            <img
-              src={"/Screenshot_2-8-2024_17131_.jpeg"}
-              className=" text-[13px]"
-            />
+            {/* <img src={"/certificateFooter.png"} className=" " /> */}
+            <img src={"/Screenshot_2-8-2024_17131_.jpeg"} className=" " />
             <div className="absolute items-center text-center left-[28px] h-[126px] flex flex-col justify-center w-[126px] bottom-[25px]">
               {/* <p className="text-[1.3vw]">الباركود هنا بعد الانشاء</p> */}
               {/* <QRCode

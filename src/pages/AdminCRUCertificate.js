@@ -15,6 +15,9 @@ const AdminCRUCertificate = ({
   div3Ref,
   noPadding,
 }) => {
+  const [firstTableFontSize, setFirstTableFontSize] = useState(12);
+  const [underTableFontSize, setUnderTableFontSize] = useState(12);
+
   const [number, setNumber] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
 
@@ -148,8 +151,6 @@ const AdminCRUCertificate = ({
       });
     }
   }, [view, isUpdate]);
-
-  console.log(certificate);
 
   const [user, setUser] = useState({});
 
@@ -311,7 +312,22 @@ const AdminCRUCertificate = ({
       } flex-col bg-zinc-200 roboto-medium`}
     >
       {/* first page */}
+      <div
+        style={{ direction: "rtl" }}
+        className="mx-auto w-[8.27in] mt-10  flex gap-3"
+      >
+        <div className="flex w-1/2 flex-col gap-1">
+          <p>حجم خط الجداول بالبيكسل:</p>
+          <input
+            value={firstTableFontSize}
+            onChange={(e) => setFirstTableFontSize(e.target.value)}
+            type="numbrt"
+          />
+        </div>
+      </div>
       <CertificateLayout
+        underTableFontSize={underTableFontSize}
+        setUnderTableFontSize={setUnderTableFontSize}
         certificate={certificate}
         name={nameAndSignatureOfAuthorizedOfficer}
         setName={setNameAndSignatureOfAuthorizedOfficer}
@@ -360,19 +376,24 @@ const AdminCRUCertificate = ({
         {/* number and verification */}
 
         {/* first table */}
-        <div className="w-[87%] mx-auto text-[12px] mt-[2px]">
+        <div
+          style={{
+            fontSize: `${firstTableFontSize}px`,
+          }}
+          className="w-[87%] mx-auto  mt-[2px]"
+        >
           <table className="min-w-full border-collapse text-center">
             <thead>
               <tr>
                 <th className="bg-[#e6e7e8] w-[50%] border-b-0  border border-[#8e8f90]/100">
                   <p className="font-normal">من / منظمة وقاية النباتات في</p>
-                  <p className="-mt-1 text-[10px] font-normal">
+                  <p className="-mt-1  font-normal">
                     From / Plant Protection Organization(s) of
                   </p>
                 </th>
                 <th className="bg-[#e6e7e8] border-l-0 w-[50%] border-b-0  border border-[#8e8f90]/100">
                   <p className="font-normal">إلي / منظمة وقاية النباتات في</p>
-                  <p className="-mt-1 text-[10px] font-normal">
+                  <p className="-mt-1  font-normal">
                     To / Plant Protection Organization(s) of
                   </p>
                 </th>
@@ -413,17 +434,27 @@ const AdminCRUCertificate = ({
         {/* first table */}
 
         {/* first thing first */}
-        <div className="w-[87%] bg-[#8e8f90] text-white py-1 px-2 mt-2 flex mx-auto text-[12px] justify-between">
+        <div
+          style={{
+            fontSize: `${firstTableFontSize}px`,
+          }}
+          className="w-[87%] bg-[#8e8f90] text-white py-1 px-2 mt-2 flex mx-auto  justify-between"
+        >
           <p>I. Description of Consignment</p>
           <p className="font-normal arabic">أولا: وصف الإرساليـــــــــة</p>
         </div>
-        <div className="w-[87%] mx-auto text-[12px]">
+        <div
+          style={{
+            fontSize: `${firstTableFontSize}px`,
+          }}
+          className="w-[87%] mx-auto "
+        >
           <table className="min-w-full border-collapse text-center">
             <thead>
               <tr>
                 <th className="bg-[#e6e7e8] border-b-0 border-t-0 w-[50%]  border border-[#8e8f90]/100">
                   <p className="font-normal">اسم جهة التصدير وعنوانها</p>
-                  <p className="-mt-1 text-[10px] font-normal">
+                  <p className="-mt-1  font-normal">
                     Name & Address of Exporter
                   </p>
                 </th>
@@ -431,7 +462,7 @@ const AdminCRUCertificate = ({
                   <p className="font-normal">
                     اسم المستورد وعنوانه حسب البيانات
                   </p>
-                  <p className="-mt-1 text-[10px] font-normal">
+                  <p className="-mt-1  font-normal">
                     Declared Name & Address of Importer
                   </p>
                 </th>
@@ -476,23 +507,24 @@ const AdminCRUCertificate = ({
             </tbody>
           </table>
         </div>
-        <div className="w-[87%] mx-auto text-[12px]">
+        <div
+          style={{
+            fontSize: `${firstTableFontSize}px`,
+          }}
+          className="w-[87%] mx-auto "
+        >
           <table className="min-w-full border-collapse text-center">
             <thead>
               <tr>
                 <th className="bg-[#e6e7e8] w-[50%] border-b-0 px-3 border-t-0 border border-[#8e8f90]/100">
                   <p className="font-normal">العلامات المميزة</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    Distinguishing Marks
-                  </p>
+                  <p className="-mt-1  font-normal">Distinguishing Marks</p>
                 </th>
                 <th className="bg-[#e6e7e8] borderb w-[50%] border-b-0 border-l-0 px-3 border-t-0 border border-[#8e8f90]/100">
                   <p className="font-normal">
                     نقطة الدخول وعنوانه حسب البيانات في
                   </p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    Declared Point of Entry
-                  </p>
+                  <p className="-mt-1  font-normal">Declared Point of Entry</p>
                 </th>
               </tr>
             </thead>
@@ -529,42 +561,37 @@ const AdminCRUCertificate = ({
           </table>
         </div>
 
-        {/* first thing first */}
-
         {/* Secound table */}
-        <div className="w-[87%] mt-4 mx-auto text-[12px]">
+        <div
+          style={{
+            fontSize: `${firstTableFontSize}px`,
+          }}
+          className="w-[87%] mt-4 mx-auto "
+        >
           <table className="min-w-full border-collapse text-center">
             <thead>
               <tr>
                 <th className="bg-[#e6e7e8]  border-b-0 w-[20%] border border-[#8e8f90]/100">
                   <p className="font-normal">غرض الاستعمال النهائي</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    End-use Purpose
-                  </p>
+                  <p className="-mt-1  font-normal">End-use Purpose</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-l-0 border-r-0 border-b-0  w-[30%] border border-[#8e8f90]/100">
                   <p className="font-normal">وسيلة النقل حسب البيانات</p>
-                  <p className="-mt-1 text-[10px] font-normal">
+                  <p className="-mt-1  font-normal">
                     Declared Means of Conveyance
                   </p>
                 </th>
                 <th className="bg-[#e6e7e8]   border-b-0 w-[20%] border border-[#8e8f90]/100">
                   <p className="font-normal">رقم إذن الاستيراد</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    Import Permit No.
-                  </p>
+                  <p className="-mt-1  font-normal">Import Permit No.</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[15%] border border-[#8e8f90]/100">
                   <p className="font-normal">الكمية الكلية</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    Total Quantity
-                  </p>
+                  <p className="-mt-1  font-normal">Total Quantity</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[30%] border border-[#8e8f90]/100">
                   <p className="font-normal">العدد الكلي للطرود</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    Total No. of Packages
-                  </p>
+                  <p className="-mt-1  font-normal">Total No. of Packages</p>
                 </th>
               </tr>
             </thead>
@@ -585,7 +612,7 @@ const AdminCRUCertificate = ({
                 </td>
                 <td className=" border-l-0 border-t-0">
                   {certificate?.id && !isUpdate ? (
-                    <div className="flex text-center text-[12px]">
+                    <div className="flex text-center ">
                       <p className="w-[40%] text-center">
                         {certificate?.declared_means_of_conveyance_left}
                       </p>
@@ -661,49 +688,48 @@ const AdminCRUCertificate = ({
         </div>
 
         {/*  */}
-        <div className="w-[87%] mx-auto text-[12px]">
+        <div
+          style={{
+            fontSize: `${firstTableFontSize}px`,
+          }}
+          className="w-[87%] mx-auto "
+        >
           <table className="min-w-full border-collapse text-center border-t-0 border border-[#8e8f90]/100">
             <thead>
               <tr>
                 <th className="bg-[#e6e7e8] border-b-0  w-[20%] border borderr md:border-[#8e8f90] border-[#8e8f90]/100">
                   <p className="font-normal">الاسم العلمي</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    Scientific Name
-                  </p>
+                  <p className="-mt-1  font-normal">Scientific Name</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[15%] border border-[#8e8f90]/100">
                   <p className="font-normal">الاسم العام</p>
-                  <p className="-mt-1 text-[10px] font-normal">Common Name</p>
+                  <p className="-mt-1  font-normal">Common Name</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[15%] border border-[#8e8f90]/100">
                   <p className="font-normal">جهة المنشأ</p>
-                  <p className="-mt-1 text-[10px] font-normal">Origin</p>
+                  <p className="-mt-1  font-normal">Origin</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[10%] border border-[#8e8f90]/100">
                   <p className="font-normal">رقم الشهادة</p>
-                  <p className="-mt-1 text-[10px] font-normal">PC No.</p>
+                  <p className="-mt-1  font-normal">PC No.</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[10%] border border-[#8e8f90]/100">
                   <p className="font-normal">الكمية</p>
-                  <p className="-mt-1 text-[10px] font-normal">Quantity</p>
+                  <p className="-mt-1  font-normal">Quantity</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[15%] border border-[#8e8f90]/100">
                   <p className="font-normal">عدد الطرود</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    No. of Packages
-                  </p>
+                  <p className="-mt-1  font-normal">No. of Packages</p>
                 </th>
                 <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[20%] border border-[#8e8f90]/100">
                   <p className="font-normal">الصنف</p>
-                  <p className="-mt-1 text-[10px] font-normal">
-                    Commodity Class
-                  </p>
+                  <p className="-mt-1  font-normal">Commodity Class</p>
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="text-[10px] border-t-0 font-normal">
+                <td className="border-t-0 font-normal">
                   See Annex of Certificate.
                 </td>
                 <td className=" border-t-0"></td>
@@ -740,6 +766,18 @@ const AdminCRUCertificate = ({
         </div>
         {/* secound */}
       </CertificateLayout>
+      <br />
+      <div
+        style={{ direction: "rtl" }}
+        className="flex mx-auto mt-3 w-1/2 flex-col gap-1"
+      >
+        <p>حجم خط الجدول في الاسفل عند الqr code:</p>
+        <input
+          value={underTableFontSize}
+          onChange={(e) => setUnderTableFontSize(e.target.value)}
+          type="numbrt"
+        />
+      </div>
 
       <br />
       <br />
@@ -748,6 +786,8 @@ const AdminCRUCertificate = ({
 
       {/* second page */}
       <CertificateLayout
+        underTableFontSize={underTableFontSize}
+        setUnderTableFontSize={setUnderTableFontSize}
         certificate={certificate}
         name={nameAndSignatureOfAuthorizedOfficer}
         setName={setNameAndSignatureOfAuthorizedOfficer}
@@ -888,6 +928,8 @@ const AdminCRUCertificate = ({
 
       {/* third page */}
       <CertificateLayout
+        underTableFontSize={underTableFontSize}
+        setUnderTableFontSize={setUnderTableFontSize}
         certificate={certificate}
         name={nameAndSignatureOfAuthorizedOfficer}
         setName={setNameAndSignatureOfAuthorizedOfficer}
