@@ -6,6 +6,7 @@ import { server } from "../utlits/Variables";
 import { useLocation, useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { BiTrash } from "react-icons/bi";
 
 const AdminCRUCertificate = ({
   view,
@@ -1090,6 +1091,19 @@ const AdminCRUCertificate = ({
                           }}
                         />
                       </td>
+                      {isUpdate || !view ? (
+                        <td
+                          onClick={() => {
+                            setData((data) => {
+                              data.splice(index, 1);
+                              return [...data];
+                            });
+                          }}
+                          className="border border-[#8e8f90]/100 border-t-0 "
+                        >
+                          <BiTrash />
+                        </td>
+                      ) : null}
                     </tr>
                   ))}
             </tbody>
