@@ -159,7 +159,7 @@ const CertificateLayout = ({
                   width: "100%",
                   height: "100%",
                 }}
-                value={`https://www.eservice-guv.ae/view-certificate/${certificate?.id}/digitalcertificates/certificateverification-aspx/?CN=${certificate?.verification_code}`}
+                value={`https://www.eservice-guv.ae/view-certificate/${certificate?.id}/digitalcertificates/certificateverification-aspx/?CN=${certificate?.number}`}
               />
             </div>
           </div>
