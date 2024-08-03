@@ -25,14 +25,13 @@ function App() {
       />
 
       <Route
-        path="/view-certificate/:ID/update/"
-        element={<AdminCRUCertificate />}
-      />
-
-      <Route
-        path="/view-certificate/:ID/download/"
+        path="/view-certificate/:ID/digitalcertificates/certificateverification-aspx/"
         element={<CertificateDownload />}
       />
+      {/* <Route
+        path="/view-certificate/:ID/download/"
+        element={<CertificateDownload />}
+      /> */}
     </Routes>
   );
 }

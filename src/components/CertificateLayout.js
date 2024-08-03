@@ -147,12 +147,19 @@ const CertificateLayout = ({
             />
             <div className="absolute items-center text-center left-[28px] h-[126px] flex flex-col justify-center w-[126px] bottom-[25px]">
               {/* <p className="text-[1.3vw]">الباركود هنا بعد الانشاء</p> */}
+              {/* <QRCode
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                value={`https://www.eservice-guv.ae/view-certificate/${certificate?.id}/digitalcertificates/certificateverification-aspx/`}
+              /> */}
               <QRCode
                 style={{
                   width: "100%",
                   height: "100%",
                 }}
-                value={`https://www.eservice-guv.ae/view-certificate/${certificate?.id}/download/`}
+                value={`https://www.eservice-guv.ae/view-certificate/${certificate?.id}/digitalcertificates/certificateverification-aspx/?CN=${certificate?.verification_code}`}
               />
             </div>
           </div>
