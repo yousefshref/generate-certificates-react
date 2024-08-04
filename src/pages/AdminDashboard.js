@@ -4,7 +4,8 @@ import LoadingScreen from "../components/LoadingScreen";
 import { server } from "../utlits/Variables";
 import { BsEye } from "react-icons/bs";
 import { GrUpdate } from "react-icons/gr";
-import { BiPencil, BiTrash } from "react-icons/bi";
+import { BiCopy, BiPencil, BiTrash } from "react-icons/bi";
+import axios from "axios";
 
 const AdminDashboard = () => {
   const [certificates, setCertificates] = useState([]);
@@ -39,6 +40,27 @@ const AdminDashboard = () => {
     const data = await response.json();
     fetchCertificates();
     setLoading(false);
+  };
+
+  const copyCertificate = async (id) => {
+    try {
+      const response = await axios.post(
+        `${server}api/certificates/${id}/copy/`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Token ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const data = await response.data;
+      console.log(data);
+      if (data.id) {
+        fetchCertificates();
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -101,6 +123,10 @@ const AdminDashboard = () => {
                   </div>
                 </div>
                 <div className="flex my-auto gap-2 justify-center">
+                  <BiCopy
+                    onClick={() => copyCertificate(certificate.id)}
+                    className="bg-green-500 select-none hover:bg-green-950 hover:text-white flex flex-col justify-center rounded-full  p-2 my-auto w-fit h-fit text-wrap transition-all"
+                  />
                   <BiTrash
                     onClick={() => deleteForm(certificate.id)}
                     className="bg-red-400 select-none hover:bg-red-950 hover:text-white flex flex-col justify-center rounded-full  p-2 my-auto w-fit h-fit text-wrap transition-all"
