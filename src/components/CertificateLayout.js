@@ -87,7 +87,7 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className="px-5">{certificate?.date_of_issue}</p>
+                        <p className="">{certificate?.date_of_issue}</p>
                       ) : (
                         <input
                           type="text"

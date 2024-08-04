@@ -4,7 +4,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import { server } from "../utlits/Variables";
 import { BsEye } from "react-icons/bs";
 import { GrUpdate } from "react-icons/gr";
-import { BiPencil } from "react-icons/bi";
+import { BiPencil, BiTrash } from "react-icons/bi";
 
 const AdminDashboard = () => {
   const [certificates, setCertificates] = useState([]);
@@ -28,11 +28,24 @@ const AdminDashboard = () => {
     fetchCertificates();
   }, []);
 
+  const deleteForm = async (id) => {
+    setLoading(true);
+    const response = await fetch(`${server}api/certificates/${id}/`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+    });
+    const data = await response.json();
+    fetchCertificates();
+    setLoading(false);
+  };
+
   return (
     <div className="flex gap-2">
       {loading ? <LoadingScreen /> : null}
       {/* sidebar */}
-      <div className="w-64 h-screen bg-gray-800 text-white">
+      <div className="w-64 h-screen max-h-full bg-gray-800 text-white">
         <div className="p-4 text-2xl font-bold">YUSUF</div>
         <nav className="p-4">
           <ul className="space-y-2">
@@ -43,7 +56,7 @@ const AdminDashboard = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col gap-1 p-2 absolute bottom-0 w-full">
+        <div className="flex flex-col gap-1 p-2 absolute bottom-0 w-fit">
           <strong>Admin</strong>
           <p>admin@gmail.com</p>
         </div>
@@ -77,7 +90,7 @@ const AdminDashboard = () => {
                 key={certificate.id}
                 className="p-3 justify-between rounded-xl from-indigo-100 flex-row items-start to-red-100 bg-gradient-to-tr w-full flex text-start"
               >
-                <div>
+                <div className="flex flex-col">
                   <div className="flex gap-2">
                     <p>Certificate Number:</p>
                     <strong>{certificate.number}</strong>
@@ -88,6 +101,10 @@ const AdminDashboard = () => {
                   </div>
                 </div>
                 <div className="flex my-auto gap-2 justify-center">
+                  <BiTrash
+                    onClick={() => deleteForm(certificate.id)}
+                    className="bg-red-400 select-none hover:bg-red-950 hover:text-white flex flex-col justify-center rounded-full  p-2 my-auto w-fit h-fit text-wrap transition-all"
+                  />
                   <Link
                     to={`/view-certificate/${certificate.id}/`}
                     className="bg-yellow-500 hover:bg-yellow-950 hover:text-white flex flex-col justify-center rounded-full  p-2 my-auto w-fit h-fit text-wrap transition-all"
