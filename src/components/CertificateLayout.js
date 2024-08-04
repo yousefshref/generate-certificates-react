@@ -35,9 +35,9 @@ const CertificateLayout = ({
           <div className="w-[87%] flex gap-2 mt-5 justify-between mx-auto">
             <div className="flex text-zinc-900 font-normal mt-2 text-[12px] w-[17%] h-fit flex-col">
               <div className="text-center">
-                <p className="font-bold">الختم الرسمي</p>
+                <p className="font-bold me-7">الختم الرسمي</p>
               </div>
-              <p className=" font-bold">Official Stamp</p>
+              <p className="text-[13px] font-bold">Official Stamp</p>
             </div>
             <div className={`w-[87%] text-[9pt] ms-auto mt-3`}>
               <table className="min-w-full border-collapse text-center">
