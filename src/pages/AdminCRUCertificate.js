@@ -83,6 +83,10 @@ const AdminCRUCertificate = ({
       treatment_date: treatmentDate,
       duration_and_temperature: durationAndTemperature,
       chemicals: chemicals,
+      //
+      font_size_1: firstTableFontSize,
+      font_size_2: underTableFontSize,
+
       data: JSON.stringify(data),
     };
     await axios
@@ -147,6 +151,8 @@ const AdminCRUCertificate = ({
         setTreatmentDate(data.treatment_date);
         setDurationAndTemperature(data.duration_and_temperature);
         setChemicals(data.chemicals);
+        setFirstTableFontSize(data.font_size_1);
+        setUnderTableFontSize(data.font_size_2);
         setData(JSON.parse(data.data));
       });
     }
@@ -290,6 +296,9 @@ const AdminCRUCertificate = ({
       treatment_date: treatmentDate,
       duration_and_temperature: durationAndTemperature,
       chemicals: chemicals,
+      //
+      font_size_1: firstTableFontSize,
+      font_size_2: underTableFontSize,
       data: JSON.stringify(data),
     };
     await axios
@@ -317,7 +326,7 @@ const AdminCRUCertificate = ({
         className="mx-auto w-[8.27in] mt-10  flex gap-3"
       >
         <div className="flex w-1/2 flex-col gap-1">
-          <p>حجم خط الجداول بالبيكسل:</p>
+          <p>حجم خط (اسم جهة التصدير وعنوانها):</p>
           <input
             value={firstTableFontSize}
             onChange={(e) => setFirstTableFontSize(e.target.value)}
@@ -378,7 +387,7 @@ const AdminCRUCertificate = ({
         {/* first table */}
         <div
           style={{
-            fontSize: `${firstTableFontSize}px`,
+            fontSize: `${"12"}px`,
           }}
           className="w-[87%] mx-auto  mt-[2px]"
         >
@@ -436,16 +445,16 @@ const AdminCRUCertificate = ({
         {/* first thing first */}
         <div
           style={{
-            fontSize: `${firstTableFontSize}px`,
+            fontSize: `${"12"}px`,
           }}
-          className="w-[87%] bg-[#8e8f90] text-white py-1 px-2 mt-2 flex mx-auto  justify-between"
+          className="w-[87%] px-3.5 bg-[#8e8f90] text-white py-1 mt-2 flex mx-auto  justify-between"
         >
           <p>I. Description of Consignment</p>
           <p className="font-normal arabic">أولا: وصف الإرساليـــــــــة</p>
         </div>
         <div
           style={{
-            fontSize: `${firstTableFontSize}px`,
+            fontSize: `${"12"}px`,
           }}
           className="w-[87%] mx-auto "
         >
@@ -458,7 +467,12 @@ const AdminCRUCertificate = ({
                     Name & Address of Exporter
                   </p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0 border-t-0 w-[50%]  border border-[#8e8f90]/100">
+                <th
+                  style={{
+                    fontSize: `${"12"}px`,
+                  }}
+                  className="bg-[#e6e7e8] border-l-0 border-b-0 border-t-0 w-[50%]  border border-[#8e8f90]/100"
+                >
                   <p className="font-normal">
                     اسم المستورد وعنوانه حسب البيانات
                   </p>
@@ -471,13 +485,11 @@ const AdminCRUCertificate = ({
             <tbody>
               <tr>
                 <td
-                  style={{
-                    lineHeight: "15px",
-                  }}
+                  style={{ fontSize: `${firstTableFontSize}px` }}
                   className="border border-t-0 border-[#8e8f90]/100 "
                 >
                   {certificate?.id && !isUpdate ? (
-                    <p className="font-normal">
+                    <p className="font-normal px-5">
                       {certificate?.name_address_of_exporter}
                     </p>
                   ) : (
@@ -509,7 +521,7 @@ const AdminCRUCertificate = ({
         </div>
         <div
           style={{
-            fontSize: `${firstTableFontSize}px`,
+            fontSize: `${"12"}px`,
           }}
           className="w-[87%] mx-auto "
         >
@@ -564,7 +576,7 @@ const AdminCRUCertificate = ({
         {/* Secound table */}
         <div
           style={{
-            fontSize: `${firstTableFontSize}px`,
+            fontSize: `${"12"}px`,
           }}
           className="w-[87%] mt-4 mx-auto "
         >
@@ -581,15 +593,15 @@ const AdminCRUCertificate = ({
                     Declared Means of Conveyance
                   </p>
                 </th>
-                <th className="bg-[#e6e7e8]   border-b-0 w-[20%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8]   border-b-0 w-[18%] border border-[#8e8f90]/100">
                   <p className="font-normal">رقم إذن الاستيراد</p>
                   <p className="-mt-1  font-normal">Import Permit No.</p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[15%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[14%] border border-[#8e8f90]/100">
                   <p className="font-normal">الكمية الكلية</p>
                   <p className="-mt-1  font-normal">Total Quantity</p>
                 </th>
-                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[30%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-l-0 border-b-0  w-[28%] border border-[#8e8f90]/100">
                   <p className="font-normal">العدد الكلي للطرود</p>
                   <p className="-mt-1  font-normal">Total No. of Packages</p>
                 </th>
@@ -690,7 +702,7 @@ const AdminCRUCertificate = ({
         {/*  */}
         <div
           style={{
-            fontSize: `${firstTableFontSize}px`,
+            fontSize: `${"12"}px`,
           }}
           className="w-[87%] mx-auto "
         >
@@ -713,15 +725,15 @@ const AdminCRUCertificate = ({
                   <p className="font-normal">رقم الشهادة</p>
                   <p className="-mt-1  font-normal">PC No.</p>
                 </th>
-                <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[10%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[8%] border border-[#8e8f90]/100">
                   <p className="font-normal">الكمية</p>
                   <p className="-mt-1  font-normal">Quantity</p>
                 </th>
-                <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[15%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[14%] border border-[#8e8f90]/100">
                   <p className="font-normal">عدد الطرود</p>
-                  <p className="-mt-1  font-normal">No. of Packages</p>
+                  <p className="-mt-1 font-normal">No. of Packages</p>
                 </th>
-                <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[20%] border border-[#8e8f90]/100">
+                <th className="bg-[#e6e7e8] border-b-0 border-l-0  w-[22%] border border-[#8e8f90]/100">
                   <p className="font-normal">الصنف</p>
                   <p className="-mt-1  font-normal">Commodity Class</p>
                 </th>

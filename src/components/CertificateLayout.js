@@ -39,12 +39,7 @@ const CertificateLayout = ({
               </div>
               <p className=" font-bold">Official Stamp</p>
             </div>
-            <div
-              style={{
-                fontSize: `${underTableFontSize}px`,
-              }}
-              className={`w-[87%] ms-auto mt-3`}
-            >
+            <div className={`w-[87%] text-[9pt] ms-auto mt-3`}>
               <table className="min-w-full border-collapse text-center">
                 <thead>
                   <tr>
@@ -72,7 +67,14 @@ const CertificateLayout = ({
                   <tr>
                     <td className=" border border-t-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" ">{certificate?.place_of_issue}</p>
+                        <p
+                          style={{
+                            fontSize: `${underTableFontSize}px`,
+                          }}
+                          className="px-2"
+                        >
+                          {certificate?.place_of_issue}
+                        </p>
                       ) : (
                         <input
                           type="text"
@@ -85,7 +87,14 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" ">{certificate?.date_of_issue}</p>
+                        <p
+                          style={{
+                            fontSize: `${underTableFontSize}px`,
+                          }}
+                          className="px-5"
+                        >
+                          {certificate?.date_of_issue}
+                        </p>
                       ) : (
                         <input
                           type="text"
