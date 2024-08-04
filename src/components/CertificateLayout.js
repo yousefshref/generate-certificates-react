@@ -39,23 +39,23 @@ const CertificateLayout = ({
               </div>
               <p className="text-[13px] font-bold">Official Stamp</p>
             </div>
-            <div className={`w-[87%] text-[9pt] ms-auto mt-3`}>
+            <div className={`w-[90%] text-[9pt] ms-auto mt-3`}>
               <table className="min-w-full border-collapse text-center">
                 <thead>
                   <tr>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[23%]  border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[28%] border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">مكان الاصدار</p>
                       <p className="-mt-1  font-normal">Place of Issue</p>
                     </th>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[18%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[15%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">تاريخ الاصدار</p>
                       <p className="-mt-1  font-normal">Date of Issue</p>
                     </th>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[20%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[19.5%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">تاريخ الفحص</p>
                       <p className="-mt-1  font-normal">Date of Inspection</p>
                     </th>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[62%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[40%] border-l-0  border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">اسم وتوقيع الموظف المختص</p>
                       <p className="-mt-1  font-normal">
                         Name & Signature of Authorized Officer
@@ -68,9 +68,9 @@ const CertificateLayout = ({
                     <td className=" border border-t-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
                         <p
-                          style={{
-                            fontSize: `${underTableFontSize}px`,
-                          }}
+                          // style={{
+                          //   fontSize: `${underTableFontSize}px`,
+                          // }}
                           className="px-2"
                         >
                           {certificate?.place_of_issue}
@@ -87,7 +87,9 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className="">{certificate?.date_of_issue}</p>
+                        <p className="text-[10pt]">
+                          {certificate?.date_of_issue}
+                        </p>
                       ) : (
                         <input
                           type="text"
@@ -100,7 +102,9 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" ">{certificate?.date_of_inspection}</p>
+                        <p className="text-[10pt]">
+                          {certificate?.date_of_inspection}
+                        </p>
                       ) : (
                         <input
                           type="text"
