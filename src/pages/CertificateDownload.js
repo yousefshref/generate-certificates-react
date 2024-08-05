@@ -176,7 +176,7 @@ const CertificateDownload = () => {
 
   useEffect(() => {
     getCertificate();
-  }, []);
+  }, [params.ID]);
 
   const [downloading, setDownloading] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -186,9 +186,12 @@ const CertificateDownload = () => {
   const div1Ref = React.useRef(null);
   const div2Ref = React.useRef(null);
   const div3Ref = React.useRef(null);
+  const div4Ref = React.useRef(null);
 
   const downloadCertificate = async () => {
     setDownloading(true);
+
+    console.log(div4Ref);
 
     if (
       certificate?.number == certificateNumber &&
@@ -207,7 +210,8 @@ const CertificateDownload = () => {
           await captureScreenshot(div1Ref),
           await captureScreenshot(div2Ref),
           await captureScreenshot(div3Ref),
-        ];
+          div4Ref.current ? await captureScreenshot(div4Ref) : null,
+        ].filter(Boolean);
 
         // Hide the divs after capturing
         parent.current.classList.add("hidden");
@@ -802,12 +806,13 @@ const CertificateDownload = () => {
         <p>الموقع الرئيسي</p>
       </div>
 
-      <div ref={parent} dir="ltr" className="hidden">
+      <div ref={parent} dir="ltr" className="">
         <AdminCRUCertificate
           noPadding
           div1Ref={div1Ref}
           div2Ref={div2Ref}
           div3Ref={div3Ref}
+          div4Ref={div4Ref}
           view
         />
       </div>

@@ -13,6 +13,7 @@ const AdminCRUCertificate = ({
   div1Ref,
   div2Ref,
   div3Ref,
+  div4Ref,
   noPadding,
 }) => {
   const [firstTableFontSize, setFirstTableFontSize] = useState(12);
@@ -55,6 +56,7 @@ const AdminCRUCertificate = ({
   const [chemicals, setChemicals] = useState("");
 
   const [data, setData] = useState([]);
+  const [extra_data, setExtraData] = useState([]);
 
   const createCertificate = async () => {
     const d = {
@@ -88,6 +90,7 @@ const AdminCRUCertificate = ({
       font_size_2: underTableFontSize,
 
       data: JSON.stringify(data),
+      extra_data: JSON.stringify(extra_data),
     };
     await axios
       .post(`${server}api/certificates/`, d, {
@@ -153,7 +156,8 @@ const AdminCRUCertificate = ({
         setChemicals(data.chemicals);
         setFirstTableFontSize(data.font_size_1);
         setUnderTableFontSize(data.font_size_2);
-        setData(JSON.parse(data.data));
+        setData(JSON.parse(data.data) || []);
+        setExtraData(JSON.parse(data.extra_data) || []);
       });
     }
   }, [view, isUpdate]);
@@ -181,21 +185,28 @@ const AdminCRUCertificate = ({
     getUser();
   }, []);
 
+  // appear div 4 or not
+  const [appearDiv4, setAppearDiv4] = useState(false);
+
   const div1Ref_ = useRef();
   const div2Ref_ = useRef();
   const div3Ref_ = useRef();
+  const div4Ref_ = useRef();
 
   const downloadCertificate = async () => {
     const captureScreenshot = async (divRef) => {
       const canvas = await html2canvas(divRef.current);
       return canvas.toDataURL("image/png");
     };
+
     try {
+      // Capture screenshots and filter out null values
       const images = [
         await captureScreenshot(div1Ref_),
         await captureScreenshot(div2Ref_),
         await captureScreenshot(div3Ref_),
-      ];
+        div4Ref_.current ? await captureScreenshot(div4Ref_) : null,
+      ].filter(Boolean); // Filter out any null values
 
       const pdf = new jsPDF({
         unit: "in", // or 'pt', 'in', 'cm', 'mm'
@@ -255,10 +266,8 @@ const AdminCRUCertificate = ({
 
         // Center image horizontally and vertically
         const x = (pageWidth - renderWidth) / 2;
-        // const y = (pageHeight - renderHeight) / 2;
         const y = 0;
 
-        // pdf.addImage(images[i], "PNG", x, y, 210, 300);
         pdf.addImage(images[i], "PNG", 0, 0, 8.27, 11.69);
       }
 
@@ -300,6 +309,7 @@ const AdminCRUCertificate = ({
       font_size_1: firstTableFontSize,
       font_size_2: underTableFontSize,
       data: JSON.stringify(data),
+      extra_data: JSON.stringify(extra_data),
     };
     await axios
       .put(`${server}api/certificates/${params.ID}/`, d, {
@@ -1192,8 +1202,258 @@ const AdminCRUCertificate = ({
         {/*  */}
       </CertificateLayout>
 
+      {appearDiv4 || extra_data?.length > 0 ? (
+        <CertificateLayout
+          underTableFontSize={underTableFontSize}
+          setUnderTableFontSize={setUnderTableFontSize}
+          certificate={certificate}
+          name={nameAndSignatureOfAuthorizedOfficer}
+          setName={setNameAndSignatureOfAuthorizedOfficer}
+          dateOfInspection={dateOfInspection}
+          setDateOfInspection={setDateOfInspection}
+          dateOfIssue={dateOfIssue}
+          setDateOfIssue={setDateOfIssue}
+          place={placeOfIssue}
+          setPlace={setPlaceOfIssue}
+          refrence={div4Ref ? div4Ref : div4Ref_}
+        >
+          <div className="w-[87%] mb-[2.5px] mt-2 mx-auto text-[9pt] flex justify-between">
+            <div className="flex flex-col text-start w-[30%]">
+              <p>Annex of Phytosanitary Certificate No.:</p>
+            </div>
+            <div className="flex flex-col text-center w-[40%]">
+              <p>{certificate?.number ? certificate?.number : number}</p>
+            </div>
+            <div dir="rtl" className="flex flex-col text-start w-[30%]">
+              <p>ملحق الشهادة الصحية رقم:</p>
+            </div>
+          </div>
+
+          {/* table */}
+          <div className="w-[87%] mt-3 mx-auto text-[9pt]">
+            <table className="min-w-full border-collapse text-center border border-[#8e8f90]/100">
+              <thead>
+                <tr>
+                  <th className="bg-[#e6e7e8] pb-1 font-normal border-t-0 border-b-0 w-[15%] border border-l-0 border-[#8e8f90]/100 ">
+                    <p>الاسم العلمي</p>
+                    <p className="-mt-1">Scientific Name</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[15%] border border-l-0 border-[#8e8f90]/100 ">
+                    <p>الاسم العام</p>
+                    <p className="-mt-1">Common Name</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[10%] border border-l-0 border-[#8e8f90]/100 ">
+                    <p>جهة المنشأ</p>
+                    <p className="-mt-1">Origin</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[10%] border border-l-0 border-[#8e8f90]/100 ">
+                    <p>رقم الشهادة</p>
+                    <p className="-mt-1">PC No.</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[10%] border border-l-0 border-[#8e8f90]/100 ">
+                    <p>الكمية</p>
+                    <p className="-mt-1">Quantity</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[15%] border border-l-0 border-[#8e8f90]/100 ">
+                    <p>عدد الطرود</p>
+                    <p className="-mt-1">No. of Packages</p>
+                  </th>
+                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[17%] border border-l-0 border-r-0 border-[#8e8f90]/100 ">
+                    <p>الصنف</p>
+                    <p className="-mt-1">Commodity Class</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {certificate?.id && !isUpdate
+                  ? JSON.parse(certificate?.extra_data)?.map((d, index) => (
+                      <tr className="w-fit" key={index}>
+                        <td className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0">
+                          {d?.scientificName}
+                        </td>
+                        <td className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0">
+                          {d?.commonName}
+                        </td>
+                        <td className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0">
+                          {d?.origin}
+                        </td>
+                        <td
+                          style={{ lineHeight: "1.2em" }}
+                          className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0"
+                        >
+                          {d?.pcNo}
+                        </td>
+                        <td className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0">
+                          {d?.quantity}
+                        </td>
+                        <td className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0">
+                          {d?.noOfPackages}
+                        </td>
+                        <td className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0">
+                          {d?.commodityClass}
+                        </td>
+                      </tr>
+                    ))
+                  : extra_data?.map((d, index) => (
+                      <tr className="w-fit" key={index}>
+                        <td className="border border-[#8e8f90]/100 border-t-0 ">
+                          <input
+                            type="text"
+                            placeholder="Enter here..."
+                            className="w-[100%]"
+                            value={d?.scientificName}
+                            onChange={(e) => {
+                              setExtraData((data) => {
+                                data[index].scientificName = e.target.value;
+                                return [...extra_data];
+                              });
+                            }}
+                          />
+                        </td>
+                        <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
+                          <input
+                            type="text"
+                            placeholder="Enter here..."
+                            className="w-[100%]"
+                            value={d?.commonName}
+                            onChange={(e) => {
+                              setExtraData((data) => {
+                                data[index].commonName = e.target.value;
+                                return [...extra_data];
+                              });
+                            }}
+                          />
+                        </td>
+                        <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
+                          <input
+                            type="text"
+                            placeholder="Enter here..."
+                            className="w-[100%]"
+                            value={d?.origin}
+                            onChange={(e) => {
+                              setExtraData((data) => {
+                                data[index].origin = e.target.value;
+                                return [...extra_data];
+                              });
+                            }}
+                          />
+                        </td>
+                        <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
+                          <input
+                            type="text"
+                            placeholder="Enter here..."
+                            className="w-[100%]"
+                            value={d?.pcNo}
+                            onChange={(e) => {
+                              setExtraData((data) => {
+                                data[index].pcNo = e.target.value;
+                                return [...extra_data];
+                              });
+                            }}
+                          />
+                        </td>
+                        <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
+                          <input
+                            type="text"
+                            placeholder="Enter here..."
+                            className="w-[100%]"
+                            value={d?.quantity}
+                            onChange={(e) => {
+                              setExtraData((data) => {
+                                data[index].quantity = e.target.value;
+                                return [...extra_data];
+                              });
+                            }}
+                          />
+                        </td>
+                        <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
+                          <input
+                            type="text"
+                            placeholder="Enter here..."
+                            className="w-[100%]"
+                            value={d?.noOfPackages}
+                            onChange={(e) => {
+                              setExtraData((data) => {
+                                data[index].noOfPackages = e.target.value;
+                                return [...extra_data];
+                              });
+                            }}
+                          />
+                        </td>
+                        <td className="border border-l-0 border-[#8e8f90]/100 border-t-0 ">
+                          <input
+                            type="text"
+                            placeholder="Enter here..."
+                            className="w-[100%]"
+                            value={d?.commodityClass}
+                            onChange={(e) => {
+                              setExtraData((data) => {
+                                data[index].commodityClass = e.target.value;
+                                return [...extra_data];
+                              });
+                            }}
+                          />
+                        </td>
+                        {isUpdate || !view ? (
+                          <td
+                            onClick={() => {
+                              setExtraData((data) => {
+                                const newData = [...data]; // Create a copy of the current state
+                                newData.splice(index, 1); // Remove one item at the specified index
+                                return newData; // Return the new array
+                              });
+                            }}
+                            className="border border-[#8e8f90]/100 border-t-0"
+                          >
+                            <BiTrash />
+                          </td>
+                        ) : null}
+                      </tr>
+                    ))}
+              </tbody>
+            </table>
+          </div>
+          {!view && (
+            <div className="w-[87%] mt-[0.5vw] flex gap-2 justify-between mx-auto">
+              <span
+                onClick={() => {
+                  setExtraData((d) => [...d, {}]);
+                }}
+                className="text-[12px] cursor-pointer text-green-600"
+              >
+                <FaPlus />
+              </span>
+            </div>
+          )}
+
+          {/*  */}
+        </CertificateLayout>
+      ) : null}
+
       <br />
       <br />
+      <br />
+      <br />
+
+      {view ? null : appearDiv4 || extra_data.length > 0 ? (
+        <button
+          onClick={() => {
+            setAppearDiv4(false);
+            setExtraData([]);
+          }}
+          className="w-[8.3in] mx-auto bg-red-400 text-white font-normal py-2 px-4 rounded"
+        >
+          Remove Forth Page
+        </button>
+      ) : (
+        <button
+          onClick={() => setAppearDiv4(true)}
+          className="w-[8.3in] mx-auto bg-[#3375ac] text-white font-normal py-2 px-4 rounded"
+        >
+          Add Forth Page
+        </button>
+      )}
+
       <br />
       <br />
 

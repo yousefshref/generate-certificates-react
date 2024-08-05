@@ -16,12 +16,15 @@ const CertificateLayout = ({
   isUpdate,
   underTableFontSize,
   setUnderTableFontSize,
+  hidden,
 }) => {
   const host = window.location.host;
   return (
     <div
       ref={refrence}
-      className="w-[8.27in] h-[11.69in] mt-20 scale-105 relative mx-auto"
+      className={`${
+        hidden ? "hidden" : "block"
+      } w-[8.27in] h-[11.69in] mt-20 scale-105 relative mx-auto`}
     >
       <div className="bg-white top-0 h-full w-full text-black">
         {/* header */}
@@ -117,7 +120,7 @@ const CertificateLayout = ({
                     </td>
                     <td className=" border border-t-0 border-l-0 md:border-[#8e8f90] border-[#8e8f90]/40 ">
                       {certificate?.id && !isUpdate ? (
-                        <p className=" ">
+                        <p className="text-[10pt]">
                           {
                             certificate?.name_and_signature_of_authorized_officer
                           }
@@ -157,7 +160,7 @@ const CertificateLayout = ({
                   width: "100%",
                   height: "100%",
                 }}
-                value={`https://www.eservice-guv.ae/view-certificate/${certificate?.id}/digitalcertificates/certificateverification-aspx/?CN=${certificate?.number}`}
+                value={`${window.location.origin}/view-certificate/${certificate?.id}/digitalcertificates/certificateverification-aspx/?CN=${certificate?.number}`}
               />
             </div>
           </div>
