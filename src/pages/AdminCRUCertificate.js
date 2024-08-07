@@ -19,6 +19,8 @@ const AdminCRUCertificate = ({
   const [firstTableFontSize, setFirstTableFontSize] = useState(12);
   const [underTableFontSize, setUnderTableFontSize] = useState(12);
 
+  const [company_name, setCompanyName] = useState("");
+
   const [number, setNumber] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
 
@@ -60,6 +62,7 @@ const AdminCRUCertificate = ({
 
   const createCertificate = async () => {
     const d = {
+      company_name,
       number,
       verification_code: verificationCode,
       frm,
@@ -126,6 +129,7 @@ const AdminCRUCertificate = ({
   useEffect(() => {
     if (view || isUpdate) {
       getCertificate().then((data) => {
+        setCompanyName(data.company_name);
         setNumber(data.number);
         setVerificationCode(data.verification_code);
         setFrm(data.frm);
@@ -280,6 +284,7 @@ const AdminCRUCertificate = ({
 
   const updateCertificate = async () => {
     const d = {
+      company_name,
       number,
       verification_code: verificationCode,
       frm,
@@ -343,6 +348,14 @@ const AdminCRUCertificate = ({
             type="numbrt"
           />
         </div>
+      </div>
+      <div className="p-3 rounded-xl bg-slate-200 flex flex-col">
+        <p>اسم الشركة</p>
+        <input
+          value={company_name}
+          onChange={(e) => setCompanyName(e.target.value)}
+          type="text"
+        />
       </div>
       <CertificateLayout
         underTableFontSize={underTableFontSize}

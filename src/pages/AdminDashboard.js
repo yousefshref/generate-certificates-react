@@ -121,6 +121,9 @@ const AdminDashboard = () => {
                     <p>Verification Code: </p>
                     <strong>{certificate.verification_code}</strong>
                   </div>
+                  <div className="flex gap-2">
+                    <p>{certificate.company_name}</p>
+                  </div>
                 </div>
                 <div className="flex my-auto gap-2 justify-center">
                   <BiCopy
