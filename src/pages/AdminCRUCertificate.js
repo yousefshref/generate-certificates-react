@@ -337,6 +337,17 @@ const AdminCRUCertificate = ({
     >
       {/* first page */}
       <div
+        dir="rtl"
+        className="p-3 w-[8.27in] mx-auto mt-10 rounded-xl bg-slate-200 flex flex-col"
+      >
+        <p>اسم الشركة</p>
+        <input
+          value={company_name}
+          onChange={(e) => setCompanyName(e.target.value)}
+          type="text"
+        />
+      </div>
+      <div
         style={{ direction: "rtl" }}
         className="mx-auto w-[8.27in] mt-10  flex gap-3"
       >
@@ -348,14 +359,6 @@ const AdminCRUCertificate = ({
             type="numbrt"
           />
         </div>
-      </div>
-      <div className="p-3 rounded-xl bg-slate-200 flex flex-col">
-        <p>اسم الشركة</p>
-        <input
-          value={company_name}
-          onChange={(e) => setCompanyName(e.target.value)}
-          type="text"
-        />
       </div>
       <CertificateLayout
         underTableFontSize={underTableFontSize}

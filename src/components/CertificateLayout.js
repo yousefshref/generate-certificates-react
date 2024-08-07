@@ -46,7 +46,7 @@ const CertificateLayout = ({
               <table className="min-w-full border-collapse text-center">
                 <thead>
                   <tr>
-                    <th className="bg-[#e6e7e8] border-b-0 w-[28%] border md:border-[#8e8f90] border-[#8e8f90]/40">
+                    <th className="bg-[#e6e7e8] border-b-0 w-[29%] border md:border-[#8e8f90] border-[#8e8f90]/40">
                       <p className="font-normal">مكان الاصدار</p>
                       <p className="-mt-1  font-normal">Place of Issue</p>
                     </th>
