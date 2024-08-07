@@ -60,3 +60,16 @@ object {
   display: initial;
   vertical-align: initial;
 }
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+th,
+td {
+  white-space: normal;
+  word-wrap: break-word;
+}
+th p {
+  margin: 0;
+}

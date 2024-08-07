@@ -729,7 +729,7 @@ const AdminCRUCertificate = ({
           <table className="min-w-full border-collapse text-center border-t-0 border border-[#8e8f90]/100">
             <thead>
               <tr>
-                <th className="bg-[#e6e7e8] border-b-0 pb-1  w-[20%] border borderr md:border-[#8e8f90] border-[#8e8f90]/100 ">
+                <th className="bg-[#e6e7e8] border-b-0 pb-1  w-[18.6%] border borderr md:border-[#8e8f90] border-[#8e8f90]/100 ">
                   <p className="font-normal">الاسم العلمي</p>
                   <p className="-mt-1  font-normal">Scientific Name</p>
                 </th>
@@ -761,7 +761,7 @@ const AdminCRUCertificate = ({
             </thead>
             <tbody>
               <tr>
-                <td className="border-t-0 font-normal pb-1">
+                <td className="border-t-0 text-[11px] pl-0.5 font-normal pb-1">
                   See Annex of Certificate.
                 </td>
                 <td className=" border-t-0 pb-1"></td>
@@ -769,7 +769,7 @@ const AdminCRUCertificate = ({
                 <td className=" border-t-0 pb-1"></td>
                 <td className=" border-t-0 pb-1"></td>
                 <td className=" border-t-0 pb-1"></td>
-                <td dir="rtl" className=" border-t-0 pb-1">
+                <td dir="rtl" className="text-start ps-1 border-t-0 pb-1">
                   انظر ملحق الشهادة.
                 </td>
               </tr>
@@ -986,7 +986,7 @@ const AdminCRUCertificate = ({
         </div>
 
         {/* table */}
-        <div className="w-[87%] mt-3 mx-auto text-[9pt]">
+        <div className="w-[87%]  mt-3 mx-auto text-[9pt]">
           <table className="min-w-full border-collapse text-center border border-[#8e8f90]/100">
             <thead>
               <tr>
@@ -1044,7 +1044,7 @@ const AdminCRUCertificate = ({
                       </td>
                       <td
                         style={{ lineHeight: "1.2em" }}
-                        className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0"
+                        className="border border-l-0 items-start pb-2 text-[9pt] w-[10%] border-[#8e8f90]/100 border-t-0"
                       >
                         {d?.pcNo}
                       </td>
@@ -1246,7 +1246,7 @@ const AdminCRUCertificate = ({
                     <p>جهة المنشأ</p>
                     <p className="-mt-1">Origin</p>
                   </th>
-                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[10%] border border-l-0 border-[#8e8f90]/100 ">
+                  <th className="bg-[#e6e7e8] pb-1 border-t-0 font-normal border-b-0 w-[10%] max-w-[10%] border border-l-0 border-[#8e8f90]/100 ">
                     <p>رقم الشهادة</p>
                     <p className="-mt-1">PC No.</p>
                   </th>
