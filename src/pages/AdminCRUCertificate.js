@@ -1039,16 +1039,7 @@ const AdminCRUCertificate = ({
             <tbody>
               {certificate?.id && !isUpdate
                 ? JSON.parse(certificate?.data)?.map((d, index) => (
-                    <tr
-                      onDoubleClick={() => {
-                        setData((data) => {
-                          data.splice(index, 1);
-                          return [...data];
-                        });
-                      }}
-                      className="w-fit"
-                      key={index}
-                    >
+                    <tr className="w-fit" key={index}>
                       <td className="border border-l-0 items-start pb-2 text-[9pt] border-[#8e8f90]/100 border-t-0">
                         {d?.scientificName}
                       </td>
@@ -1076,16 +1067,7 @@ const AdminCRUCertificate = ({
                     </tr>
                   ))
                 : data?.map((d, index) => (
-                    <tr
-                      onDoubleClick={() => {
-                        setData((data) => {
-                          data.splice(index, 1);
-                          return [...data];
-                        });
-                      }}
-                      className="w-fit"
-                      key={index}
-                    >
+                    <tr className="w-fit" key={index}>
                       <td className="border border-[#8e8f90]/100 border-t-0 ">
                         <input
                           type="text"
@@ -1188,13 +1170,36 @@ const AdminCRUCertificate = ({
                         <td
                           onClick={() => {
                             setData((data) => {
-                              data.splice(index, 1);
-                              return [...data];
+                              const newTableData = [...data];
+                              newTableData.splice(index, 1);
+                              return newTableData;
                             });
                           }}
                           className="border border-[#8e8f90]/100 border-t-0 "
                         >
                           <BiTrash />
+                        </td>
+                      ) : null}
+                      {isUpdate || !view ? (
+                        <td
+                          onClick={() => {
+                            setData((data) => {
+                              const newTableData = [...data];
+                              newTableData.splice(index, 0, {
+                                scientificName: "",
+                                commonName: "",
+                                origin: "",
+                                pcNo: "",
+                                quantity: "",
+                                noOfPackages: "",
+                                commodityClass: "",
+                              });
+                              return newTableData;
+                            });
+                          }}
+                          className="border border-[#8e8f90]/100 border-t-0 "
+                        >
+                          <FaPlus className="text-green-600 cursor-pointer" />
                         </td>
                       ) : null}
                     </tr>
@@ -1422,6 +1427,28 @@ const AdminCRUCertificate = ({
                             className="border border-[#8e8f90]/100 border-t-0"
                           >
                             <BiTrash />
+                          </td>
+                        ) : null}
+                        {isUpdate || !view ? (
+                          <td
+                            onClick={() => {
+                              setExtraData((data) => {
+                                const newTableData = [...data];
+                                newTableData.splice(index, 0, {
+                                  scientificName: "",
+                                  commonName: "",
+                                  origin: "",
+                                  pcNo: "",
+                                  quantity: "",
+                                  noOfPackages: "",
+                                  commodityClass: "",
+                                });
+                                return newTableData;
+                              });
+                            }}
+                            className="border border-[#8e8f90]/100 border-t-0 "
+                          >
+                            <FaPlus className="text-green-600 cursor-pointer" />
                           </td>
                         ) : null}
                       </tr>
