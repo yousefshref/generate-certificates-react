@@ -209,8 +209,14 @@ const CertificateDownload = () => {
         const images = [
           await captureScreenshot(div1Ref),
           await captureScreenshot(div2Ref),
-          await captureScreenshot(div3Ref),
-          div4Ref.current ? await captureScreenshot(div4Ref) : null,
+          certificate?.scientific_name
+            ? null
+            : await captureScreenshot(div3Ref),
+          div4Ref.current
+            ? certificate?.scientific_name
+              ? null
+              : await captureScreenshot(div4Ref)
+            : null,
         ].filter(Boolean);
 
         // Hide the divs after capturing

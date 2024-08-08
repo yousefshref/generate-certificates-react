@@ -19,6 +19,10 @@ IF UPDATE || CREATE -> INPUTS
 IF VIEW -> (IF scientific_name EXIST -> data |||| IF NOT DISPLAY "See Annex of Certificate.")
 
 
+IF scientific_name -> HIDE THREE AND FOUR PAGES
+
+
+
 
 
 

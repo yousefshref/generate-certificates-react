@@ -236,8 +236,12 @@ const AdminCRUCertificate = ({
       const images = [
         await captureScreenshot(div1Ref_),
         await captureScreenshot(div2Ref_),
-        await captureScreenshot(div3Ref_),
-        div4Ref_.current ? await captureScreenshot(div4Ref_) : null,
+        scientific_name ? null : await captureScreenshot(div3Ref_),
+        div4Ref_.current
+          ? scientific_name
+            ? null
+            : await captureScreenshot(div4Ref_)
+          : null,
       ].filter(Boolean); // Filter out any null values
 
       const pdf = new jsPDF({
