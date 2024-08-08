@@ -15,6 +15,9 @@ Deploy done
 
 
 
+IF UPDATE || CREATE -> INPUTS
+IF VIEW -> (IF scientific_name EXIST -> data |||| IF NOT DISPLAY "See Annex of Certificate.")
+
 
 
 
